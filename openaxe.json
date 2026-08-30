@@ -8,19 +8,6 @@
     "directory": "skills",
     "autoLoad": ["analyze", "search", "testgen", "refactor", "orchestrator", "hardware", "learning", "mcp", "qaoa", "vqe", "qwalk", "grover"]
   },
-  "mcp": {
-    "servers": {
-      "qwispr": {
-        "command": "node",
-        "args": ["dist/cli.js", "mcp", "--stdio"],
-        "env": {
-          "QWISPR_BACKEND": "simulator",
-          "QWISPR_TELEMETRY": "0"
-        },
-        "tools": ["analyze", "search", "testgen", "refactor", "hardware"]
-      }
-    }
-  },
   "agents": {
     "directory": "agents",
     "registry": "AGENTS.md"

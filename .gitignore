@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.omo/codegraph/
+*.log
+.DS_Store
+.env
+.codegraph
+__pycache__/
+*.pyc

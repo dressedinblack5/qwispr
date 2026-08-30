@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "id": "synthetic-3q-1",
+      "solver": "quantum",
+      "success": true,
+      "wallMs": 3075
+    },
+    {
+      "id": "synthetic-4q-2",
+      "solver": "quantum",
+      "success": true,
+      "wallMs": 3401
+    }
+  ],
+  "summary": {
+    "successRate": 1,
+    "avgMs": 3238,
+    "p95Ms": 3401
+  }
+}

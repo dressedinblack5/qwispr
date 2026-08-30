@@ -1,0 +1,93 @@
+{
+  "name": "qwispr",
+  "version": "0.1.0",
+  "description": "Quantum-enhanced general coding assistant on OpenAxe",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "qwispr": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/cli.ts",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:code-graph": "vitest run src/skills/code-graph",
+    "test:problem-encoder": "vitest run src/skills/problem-encoder",
+    "test:qaoa-agent": "vitest run src/skills/qaoa-agent",
+    "test:dep-agent": "vitest run src/skills/dep-agent",
+    "test:grover-agent": "vitest run src/skills/grover-agent",
+    "test:qml-agent": "vitest run src/skills/qml-agent",
+    "test:qwalk-agent": "vitest run src/skills/qwalk-agent",
+    "test:benchmarks": "vitest run src/benchmarks",
+    "baseline": "tsx src/benchmarks/baselines/run-classical.ts",
+    "quantum-run": "tsx src/benchmarks/runners/run-quantum.ts",
+    "compare": "tsx src/benchmarks/report/generate.ts",
+    "ci:smoke": "tsx src/benchmarks/runners/smoke.ts",
+    "ci:full": "npm run baseline && npm run quantum-run && npm run compare",
+    "benchmark:real": "node scripts/benchmark.js real",
+    "benchmark": "node scripts/benchmark.js synthetic",
+    "benchmark:report": "node scripts/benchmark.js report",
+    "docs:dev": "vitepress dev docs/site",
+    "docs:build": "vitepress build docs/site",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "quantum",
+    "coding-assistant",
+    "openaxe",
+    "qaoa",
+    "optimization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "fast-json-patch": "^3.1.1",
+    "ora": "^8.0.0",
+    "semver": "^7.6.0",
+    "tree-sitter": "^0.21.0",
+    "tree-sitter-javascript": "^0.20.0",
+    "tree-sitter-typescript": "^0.20.0",
+    "tree-sitter-wasm": "^1.1.6",
+    "yaml": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "@types/semver": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.5.0",
+    "vitest": "^4.1.11",
+    "vite": "^6.4.3",
+    "vitepress": "^1.6.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "allowScripts": {
+    "tree-sitter@0.21.1": true,
+    "tree-sitter@0.20.6": true,
+    "tree-sitter-javascript@0.20.4": true,
+    "tree-sitter-typescript@0.20.5": true
+  },
+  "overrides": {
+    "esbuild": "^0.25.12",
+    "vite": "^6.4.3"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "src/skills/vqe-agent/vqe.py",
+    "src/skills/qaoa-agent/qaoa.py",
+    "src/skills/hardware/qpu.py"
+  ]
+}

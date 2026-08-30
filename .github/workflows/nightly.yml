@@ -1,0 +1,52 @@
+name: Nightly
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install JS deps
+        run: npm ci
+
+      - name: Audit (high+critical)
+        run: npm audit --audit-level=high
+
+      - name: Install Python deps
+        run: pip install pennylane --quiet || true
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Benchmark synthetic
+        run: npm run benchmark --if-present
+
+      - name: Benchmark real
+        run: npm run benchmark:real --if-present
+
+      - name: Comparison report
+        run: npm run benchmark:report --if-present
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-results
+          path: |
+            results/
+            report/
+          if-no-files-found: warn

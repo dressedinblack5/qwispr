@@ -1,0 +1,22 @@
+# TICKET-23: CI/CD Enhancement — Nightly Benchmarks
+
+**Owner**: Sisyphus
+**Estimate**: 1 day
+**Blocks**: None
+**Blocked by**: 10 (ci-pipeline)
+
+## Acceptance Criteria
+- [ ] `.github/workflows/nightly.yml` — scheduled runs
+- [ ] Runs: full benchmark (real + synthetic) nightly
+- [ ] Artifact: report with trend charts
+- [ ] PR comment: benchmark comparison vs main
+- [ ] Alert: regression detection (pass rate drop >5%)
+- [ ] Dashboard: GitHub Pages with historical trends
+- [ ] Cost tracking: quantum simulator time, hardware costs
+
+## Implementation Notes
+- `on: schedule: cron: '0 2 * * *'`
+- `actions/upload-artifact` with retention 90 days
+- `actions/download-artifact` for trend comparison
+- Chart.js in HTML report for trends
+- `gh api` to post PR comments

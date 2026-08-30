@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openaxe.dev/schema.json",
+  "name": "qwispr",
+  "version": "0.1.0",
+  "description": "Quantum-enhanced general coding assistant on OpenAxe",
+  "workspace": ".",
+  "skills": {
+    "directory": "skills",
+    "autoLoad": ["code-graph", "problem-encoder", "qaoa-agent", "dep-agent"]
+  },
+  "agents": {
+    "directory": "agents",
+    "registry": "AGENTS.md"
+  },
+  "context": {
+    "maxTokens": 100000,
+    "spillStrategy": "streaming"
+  },
+  "kanban": {
+    "board": ".omo/kanban.json"
+  }
+}

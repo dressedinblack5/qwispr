@@ -1,0 +1,802 @@
+[
+  {
+    "lockfile": "lockfile-complex-mixed-1.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 4,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-10.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 1,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-2.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-3.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-4.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-5.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-6.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 1,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-7.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-8.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-9.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "express": "4.18.2",
+      "jest": "29.7.0",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "lodash": "4.17.21",
+      "typescript": "5.2.0",
+      "@types/node": "20.9.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-1.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-10.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 1,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-2.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-3.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-4.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-5.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-6.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-7.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-8.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-9.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-1.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-10.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-2.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-3.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-4.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-5.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-6.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-7.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-8.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-9.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "pkg-b": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "violations": [
+      "pkg-b@1.0.0 requires shared-dep@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-1.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-10.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-2.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-3.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 1,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-4.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-5.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-6.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-7.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-8.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-9.json",
+    "solver": "greedy",
+    "success": true,
+    "timeMs": 0,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-1.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-10.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 1,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-2.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-3.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-4.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-5.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-6.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-7.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-8.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 1,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-9.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "optional-dep": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "violations": [
+      "optional-dep@1.0.0 requires shared@^2.0.0, got 1.5.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-1.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-10.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-2.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 1,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-3.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-4.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-5.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-6.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-7.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-8.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 1,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-9.json",
+    "solver": "greedy",
+    "success": false,
+    "timeMs": 0,
+    "versions": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "violations": [
+      "some-plugin@1.0.0 peer requires react@^17.0.0, got 18.2.0"
+    ]
+  }
+]

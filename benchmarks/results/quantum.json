@@ -1,0 +1,2492 @@
+[
+  {
+    "lockfile": "lockfile-complex-mixed-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 29,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 25,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 25,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 25,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-complex-mixed-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -69993,
+    "versions": {
+      "lodash": "4.17.21",
+      "axios": "1.6.0",
+      "react": "18.2.0",
+      "express": "4.18.2",
+      "typescript": "5.2.0",
+      "": "types/node",
+      "jest": "29.7.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 20,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-cyclic-conflict-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-x": "1.0.0",
+      "pkg-y": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 25,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 20,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 25,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-diamond-conflict-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "pkg-a": "1.0.0",
+      "shared-dep": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 25,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-direct-conflict-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "lodash": "4.17.21",
+      "underscore": "1.13.6"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 20,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-optional-conflict-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "main-pkg": "1.0.0",
+      "shared": "1.5.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-1.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-1.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-1.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-10.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-10.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-10.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-2.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-2.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-2.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-3.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-3.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-3.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-4.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-4.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-4.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-5.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 24,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-5.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-5.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-6.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-6.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-6.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-7.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-7.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-7.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-8.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-8.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-8.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 23,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-9.json",
+    "layers": 1,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-9.json",
+    "layers": 2,
+    "success": true,
+    "timeMs": 21,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  },
+  {
+    "lockfile": "lockfile-peer-conflict-9.json",
+    "layers": 3,
+    "success": true,
+    "timeMs": 22,
+    "energy": -19998,
+    "versions": {
+      "react-dom": "18.2.0",
+      "some-plugin": "1.0.0"
+    },
+    "valid": true,
+    "violations": []
+  }
+]

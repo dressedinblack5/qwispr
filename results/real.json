@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "id": "real-4q-1",
+      "solver": "quantum",
+      "success": true,
+      "wallMs": 3342
+    },
+    {
+      "id": "real-5q-2",
+      "solver": "quantum",
+      "success": true,
+      "wallMs": 3980
+    }
+  ],
+  "summary": {
+    "successRate": 1,
+    "avgMs": 3661,
+    "p95Ms": 3980
+  }
+}

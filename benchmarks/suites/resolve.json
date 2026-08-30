@@ -1,0 +1,11 @@
+{
+  "suite": "resolve",
+  "description": "Dependency resolution tasks — fix ERESOLVE conflicts",
+  "files": [
+    "real/real-01-react-peer.json",
+    "real/real-02-webpack-peer.json",
+    "real/real-03-eslint-peer.json",
+    "real/real-04-typescript-peer.json",
+    "real/real-05-diamond-deps.json"
+  ]
+}

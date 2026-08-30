@@ -1,4 +1,5 @@
 import { generateTestInputs } from '../skills/testgen-agent/testgen';
+import { parseIntSafe } from './parse-int';
 
 export async function testgenCommand(args: string[]) {
   let file = '',
@@ -8,9 +9,7 @@ export async function testgenCommand(args: string[]) {
     if (args[i] === '--file' && args[i + 1]) file = args[++i];
     else if (args[i] === '--function' && args[i + 1]) fn = args[++i];
     else if (args[i] === '--layers' && args[i + 1]) {
-      const v = parseInt(args[++i], 10);
-      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --layers');
-      layers = v;
+      layers = parseIntSafe(args[++i], '--layers');
     }
   }
   if (!file || !fn)

@@ -155,7 +155,7 @@ export async function startMcpServer(): Promise<void> {
     }
   };
 
-  process.stdin.on('data', (chunk: string) => {
+  process.stdin.on('data', async (chunk: string) => {
     buf += chunk;
     let idx: number;
     while ((idx = buf.indexOf('\n')) !== -1) {
@@ -168,14 +168,14 @@ export async function startMcpServer(): Promise<void> {
       } catch {
         continue;
       }
-      handle(msg);
+      await handle(msg);
     }
   });
 
-  process.stdin.on('end', () => {
+  process.stdin.on('end', async () => {
     if (buf.trim()) {
       try {
-        handle(JSON.parse(buf.trim()));
+        await handle(JSON.parse(buf.trim()));
       } catch {
         /* ignore */
       }

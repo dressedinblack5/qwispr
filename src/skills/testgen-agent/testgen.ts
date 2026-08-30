@@ -181,7 +181,36 @@ export async function generateTestInputs(opts: {
   for (const cand of [plus, minus, zero]) {
     if (!inputs.some(a => a.every((v, i) => v === cand[i]))) inputs.push(cand);
   }
-  // ensure at least one triggers branch by evaluating body conditions naively
+  // ponytail: no eval — pure branch-distance heuristic only
+  const evalCond = (cond: string, env: Record<string, number>): boolean | null => {
+    const c = cond.trim();
+    if (/^\w+$/.test(c)) return !!env[c];
+    if (/^!\w+$/.test(c)) return !env[c.slice(1)];
+    const cmp = c.match(/^(\w+)\s*(>=|<=|>|<|===|==|!==|!=)\s*(-?\d+|\w+)$/);
+    if (!cmp) return null;
+    const [, left, op, right] = cmp;
+    const lv = left in env ? env[left]! : Number(left);
+    const rv = right in env ? env[right]! : Number(right);
+    if (Number.isNaN(lv) || Number.isNaN(rv)) return null;
+    switch (op) {
+      case '>':
+        return lv > rv;
+      case '>=':
+        return lv >= rv;
+      case '<':
+        return lv < rv;
+      case '<=':
+        return lv <= rv;
+      case '===':
+      case '==':
+        return lv === rv;
+      case '!==':
+      case '!=':
+        return lv !== rv;
+      default:
+        return null;
+    }
+  };
   const triggersBranch = (vals: number[]) => {
     const env: Record<string, number> = {};
     params.forEach((p, i) => (env[p] = vals[i]!));
@@ -189,15 +218,7 @@ export async function generateTestInputs(opts: {
     let mm: RegExpExecArray | null;
     while ((mm = re.exec(body))) {
       const cond = mm[1].trim();
-      try {
-        let expr = cond;
-        for (const [k, v] of Object.entries(env))
-          expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), String(v));
-        // eslint-disable-next-line no-eval
-        if (eval(expr)) return true;
-      } catch {
-        void 0;
-      }
+      if (evalCond(cond, env) === true) return true;
     }
     return false;
   };

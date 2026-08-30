@@ -4,18 +4,18 @@
       "id": "synthetic-3q-1",
       "solver": "quantum",
       "success": true,
-      "wallMs": 2741
+      "wallMs": 4458
     },
     {
       "id": "synthetic-4q-2",
       "solver": "quantum",
       "success": true,
-      "wallMs": 3305
+      "wallMs": 5457
     }
   ],
   "summary": {
     "successRate": 1,
-    "avgMs": 3023,
-    "p95Ms": 3305
+    "avgMs": 4958,
+    "p95Ms": 5457
   }
 }

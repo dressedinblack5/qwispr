@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import { runVqe } from '../skills/vqe-agent/vqe';
 import { assertFileExists } from '../skills/hardening/guard';
+import { parseIntSafe } from './parse-int';
 
 export async function vqeCommand(args: string[]) {
   let quboFile = '',
@@ -9,13 +10,9 @@ export async function vqeCommand(args: string[]) {
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--qubo' && args[i + 1]) quboFile = args[++i];
     else if (args[i] === '--layers' && args[i + 1]) {
-      const v = parseInt(args[++i], 10);
-      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --layers/--iters');
-      layers = v;
+      layers = parseIntSafe(args[++i], '--layers');
     } else if (args[i] === '--iters' && args[i + 1]) {
-      const v = parseInt(args[++i], 10);
-      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --layers/--iters');
-      iters = v;
+      iters = parseIntSafe(args[++i], '--iters');
     }
   }
   if (!quboFile) throw new Error('usage: qwispr vqe --qubo <file> --layers 2 --iters 50');

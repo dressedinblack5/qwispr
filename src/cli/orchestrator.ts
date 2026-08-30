@@ -8,6 +8,7 @@ import { testgenCommand } from './testgen';
 import { analyzeCommand } from './analyze';
 import { refactorCommand } from './refactor';
 import { runQaoa } from '../skills/qaoa-agent/qaoa';
+import { parseIntSafe } from './parse-int';
 
 function parseTask(args: string[]): {
   task: Task;
@@ -22,9 +23,7 @@ function parseTask(args: string[]): {
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--task' && args[i + 1]) task = args[++i] as Task;
     else if (args[i] === '--vars' && args[i + 1]) {
-      const v = parseInt(args[++i], 10);
-      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --vars');
-      nVars = v;
+      nVars = parseIntSafe(args[++i], '--vars');
     } else if (args[i] === '--trivial') trivial = true;
     else rest.push(args[i]);
   }
@@ -84,9 +83,10 @@ export async function orchestratorCommand(args: string[]) {
         if (decision.route === 'quantum') result = await runQaoa({ Q });
         else {
           const n = Q.length;
+          if (n > 20) throw new Error(`qwispr: n=${n} too large for classical brute force (max 20)`);
           let best = Infinity,
             bestBs = '';
-          for (let bits = 0; bits < 1 << n; bits++) {
+          for (let bits = 0; bits < Math.pow(2, n); bits++) {
             const bv = Array.from({ length: n }, (_, k) => (bits >> k) & 1);
             const e = Q.reduce(
               (s: number, row: number[], i: number) =>

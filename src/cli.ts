@@ -10,21 +10,17 @@ import { orchestratorCommand } from './cli/orchestrator';
 import { Backend, getBackend, getDeviceString } from './skills/hardware/backend';
 import { getQpuStatus } from './skills/hardware/qpu';
 import { startMcpServer } from './mcp/server';
+import { parseIntSafe } from './cli/parse-int';
 
 function hardwareList() {
   const current = getBackend();
   const envBackend = process.env.QWISPR_BACKEND ?? '(unset)';
   const envDevice = process.env.QWISPR_DEVICE ?? '(unset)';
-  const rows = (Object.values(Backend) as string[]).map(
-    b => `${b} -> ${getDeviceString(b as Backend)}${(b as Backend) === current ? ' (current)' : ''}`
+  const rows = Object.values(Backend).map(
+    b => `${b} -> ${getDeviceString(b)}${b === current ? ' (current)' : ''}`
   );
   const qpuStatus = getQpuStatus();
-  const qpuWarning =
-    qpuStatus.backend === Backend.ibm && !qpuStatus.hasToken && !qpuStatus.dryRun
-      ? 'QISKIT_TOKEN missing — falling back to simulator'
-      : qpuStatus.dryRun && qpuStatus.backend === Backend.ibm
-        ? 'dry-run: simulated QPU path'
-        : undefined;
+  const qpuWarning = qpuStatus.dryRun ? 'dry-run: simulated QPU path' : undefined;
   console.log(
     JSON.stringify(
       {
@@ -51,33 +47,33 @@ function printHelp() {
   console.log('Usage: qwispr <command> [options]');
   console.log('');
   console.log('Commands:');
-  console.log('  code-graph, analyze, qwalk   call-graph + QWalk metrics');
+  console.log('  analyze, qwalk   call-graph + QWalk metrics');
   console.log('    qwispr analyze --file <path> [--entry <name>]');
-  console.log('    qwispr code-graph --file <path> [--entry <name>]  (alias)');
-  console.log('  dep-agent, qaoa, resolve     QUBO dependency resolution (QAOA/classical)');
+  console.log('    qwispr qwalk --file <path> [--entry <name>]  (alias)');
+  console.log('  resolve          QUBO dependency resolution (QAOA/classical)');
   console.log(
-    '    qwispr run --task resolve --qubo <file> [--backend simulator|lightning|ibm|braket]'
+    '    qwispr run --task resolve --qubo <file> [--backend simulator|lightning]'
   );
-  console.log('  grover, search               Grover-ranked code search');
+  console.log('  grover, search   Grover-ranked code search');
   console.log('    qwispr search --pattern <regex> --files <glob> [--top 10]');
   console.log('    qwispr grover --pattern <regex> --files <glob> [--top 10]  (alias)');
-  console.log('  vqe, testgen                 VQE test-input generation');
+  console.log('  vqe, testgen     VQE test-input generation');
   console.log('    qwispr vqe --qubo <file> [--layers N] [--iters N]');
   console.log('    qwispr testgen --file <path> --function <name> [--layers 2]');
-  console.log('  refactor                     QWalk+QML refactoring suggestions');
+  console.log('  refactor         QWalk+QML refactoring suggestions');
   console.log('    qwispr refactor --file <path> [--top 5]');
-  console.log('  run, orchestrate             hybrid router (classical vs quantum)');
+  console.log('  run, orchestrate hybrid router (classical vs quantum)');
   console.log(
     '    qwispr run --task resolve|search|testgen|analyze|refactor [args...] [--backend ...]'
   );
   console.log('    qwispr orchestrate --task <task> [args...]  (alias)');
-  console.log('  hardware, backend            backend/device inspection');
+  console.log('  hardware, backend backend/device inspection');
   console.log('    qwispr hardware --list  (alias: qwispr backend --list)');
-  console.log('  mcp                          MCP stdio server (tools/list + tools/call)');
+  console.log('  mcp              MCP stdio server (tools/list + tools/call)');
   console.log('    qwispr mcp --stdio');
   console.log('');
   console.log('Options:');
-  console.log('  --backend <name>   simulator|lightning|ibm|braket (also QWISPR_BACKEND env)');
+  console.log('  --backend <name>   simulator|lightning (also QWISPR_BACKEND env)');
   console.log('  --help, -h         show this help');
   console.log('');
   console.log(
@@ -92,20 +88,11 @@ async function main() {
     return;
   }
   const alias: Record<string, string> = {
-    'code-graph': 'analyze',
-    code_graph: 'analyze',
     qwalk: 'analyze',
     grover: 'search',
-    'dep-agent': 'resolve',
-    qaoa: 'resolve',
   };
   if (alias[args[0]]) {
-    if (args[0] === 'dep-agent' || args[0] === 'qaoa' || args[0] === 'resolve') {
-      args[0] = 'run';
-      args.splice(1, 0, '--task', 'resolve');
-    } else {
-      args[0] = alias[args[0]];
-    }
+    args[0] = alias[args[0]];
   }
   if (args[0] === 'mcp') {
     await startMcpServer();
@@ -128,13 +115,9 @@ async function main() {
     for (let i = 1; i < args.length; i++) {
       if (args[i] === '--qubo' && args[i + 1]) quboFile = args[++i];
       else if (args[i] === '--layers' && args[i + 1]) {
-        const v = parseInt(args[++i], 10);
-        if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --layers/--iters');
-        layers = v;
+        layers = parseIntSafe(args[++i], '--layers');
       } else if (args[i] === '--iters' && args[i + 1]) {
-        const v = parseInt(args[++i], 10);
-        if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --layers/--iters');
-        iters = v;
+        iters = parseIntSafe(args[++i], '--iters');
       }
     }
     if (!quboFile) {

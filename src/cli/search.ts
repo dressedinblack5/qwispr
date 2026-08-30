@@ -1,4 +1,5 @@
 import { search } from '../skills/search-agent/search';
+import { parseIntSafe } from './parse-int';
 
 export function searchCommand(args: string[]) {
   let pattern = '',
@@ -8,9 +9,7 @@ export function searchCommand(args: string[]) {
     if (args[i] === '--pattern' && args[i + 1]) pattern = args[++i];
     else if (args[i] === '--files' && args[i + 1]) files = args[++i];
     else if (args[i] === '--top' && args[i + 1]) {
-      const v = parseInt(args[++i], 10);
-      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --top');
-      top = v;
+      top = parseIntSafe(args[++i], '--top');
     }
   }
   if (!pattern || !files)

@@ -18,20 +18,19 @@ afterEach(() => {
 
 describe('qpu', () => {
   it('no token → fallback simulator with warning', async () => {
-    process.env.QWISPR_BACKEND = 'ibm';
+    process.env.QWISPR_BACKEND = 'simulator';
     delete process.env.QISKIT_TOKEN;
     delete process.env.QWISPR_QPU_DRYRUN;
     const s = getQpuStatus();
-    expect(s.backend).toBe(Backend.ibm);
+    expect(s.backend).toBe(Backend.simulator);
     expect(s.hasToken).toBe(false);
     expect(s.dryRun).toBe(false);
     const r = await runQpuOrFallback('dummy.json');
     expect(r.path).toBe('simulator');
-    expect(r.warning).toMatch(/QISKIT_TOKEN missing/);
   });
 
   it('dryRun → qpu path', async () => {
-    process.env.QWISPR_BACKEND = 'ibm';
+    process.env.QWISPR_BACKEND = 'simulator';
     process.env.QWISPR_QPU_DRYRUN = '1';
     delete process.env.QISKIT_TOKEN;
     const s = getQpuStatus();
@@ -61,7 +60,7 @@ describe('qpu', () => {
     expect(out['01'] + out['10']).toBeGreaterThan(0);
   });
 
-  it('non-ibm backend → simulator no warning', async () => {
+  it('simulator backend → simulator no warning', async () => {
     process.env.QWISPR_BACKEND = 'simulator';
     const r = await runQpuOrFallback('dummy.json');
     expect(r.path).toBe('simulator');

@@ -59,48 +59,10 @@ export async function runQpuOrFallback(
 ): Promise<{ result: unknown; path: 'qpu' | 'simulator'; warning?: string }> {
   const s = getQpuStatus();
   const shots = opts?.shots ?? s.shots;
-  if (s.backend !== Backend.ibm) return { result: null, path: 'simulator' };
-  if (!s.hasToken && !s.dryRun) {
-    return {
-      result: null,
-      path: 'simulator',
-      warning: 'QISKIT_TOKEN missing — falling back to simulator',
-    };
-  }
-  if (s.dryRun)
-    return {
-      result: { dryRun: true, shots, quboPath } satisfies QpuResult,
-      path: 'qpu',
-      warning: 'dry-run: simulated QPU path',
-    };
-  // hasToken → try python stub (async, non-blocking)
-  try {
-    const py = path.resolve(__dirname, 'qpu.py');
-    const srcPy = path.resolve(__dirname, '../../../src/skills/hardware/qpu.py');
-    const file = fs.existsSync(py) ? py : srcPy;
-    const { stdout } = await spawnWithTimeout(
-      'python3',
-      [file, '--qubo', quboPath, '--shots', String(shots)],
-      { timeout: 5000 }
-    );
-    const raw = stdout.trim().split('\n').pop() || '{}';
-    const parsed: unknown = JSON.parse(raw);
-    const result: unknown = isQpuResult(parsed) ? parsed : parsed;
-    return { result, path: 'qpu' };
-  } catch (e: unknown) {
-    const msg = e instanceof Error ? e.message : String(e);
-    // ENOENT typed handling — python3 not found
-    if (msg.includes('ENOENT')) {
-      return {
-        result: null,
-        path: 'simulator',
-        warning: `QPU stub error — falling back to simulator: python3 not found (ENOENT)`,
-      };
-    }
-    return {
-      result: null,
-      path: 'simulator',
-      warning: `QPU stub failed — falling back to simulator: ${msg.slice(0, 200)}`,
-    };
-  }
+  if (!s.dryRun) return { result: null, path: 'simulator' };
+  return {
+    result: { dryRun: true, shots, quboPath } satisfies QpuResult,
+    path: 'qpu',
+    warning: 'dry-run: simulated QPU path',
+  };
 }

@@ -1,5 +1,5 @@
-import * as fs from "node:fs";
-import { bfsReachable, centrality, diameter, hotSpots, buildAdj } from "../qwalk-agent/qwalk";
+import * as fs from 'node:fs';
+import { bfsReachable, centrality, diameter, hotSpots, buildAdj } from '../qwalk-agent/qwalk';
 
 export interface AnalyzeResult {
   nodes: string[];
@@ -14,11 +14,18 @@ export interface AnalyzeResult {
 function extractCallGraph(source: string): { nodes: string[]; edges: [string, string][] } {
   // try code-graph if available
   try {
-    const cg = (globalThis as unknown as { __codeGraph?: { parse: (s: string) => { nodes: string[]; edges: [string, string][] } } }).__codeGraph;
+    const cg = (
+      globalThis as unknown as {
+        __codeGraph?: { parse: (s: string) => { nodes: string[]; edges: [string, string][] } };
+      }
+    ).__codeGraph;
     if (cg) return cg.parse(source);
-  } catch { /* fallback */ }
+  } catch {
+    /* fallback */
+  }
 
-  const funcRe = /(?:function\s+(\w+)\s*\(|(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?\(.*?\)\s*=>|(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?function\s*\()/g;
+  const funcRe =
+    /(?:function\s+(\w+)\s*\(|(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?\(.*?\)\s*=>|(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?function\s*\()/g;
   const funcs: { name: string; index: number }[] = [];
   let m: RegExpExecArray | null;
   while ((m = funcRe.exec(source))) {
@@ -43,7 +50,12 @@ function extractCallGraph(source: string): { nodes: string[]; edges: [string, st
     while ((cm = callRe.exec(body))) {
       const callee = cm[1];
       if (callee === funcs[i].name) continue; // skip self definition match
-      if (["if", "for", "while", "switch", "catch", "function", "return", "await", "async"].includes(callee)) continue;
+      if (
+        ['if', 'for', 'while', 'switch', 'catch', 'function', 'return', 'await', 'async'].includes(
+          callee
+        )
+      )
+        continue;
       if (nodeSet.has(callee) && !seen.has(callee)) {
         seen.add(callee);
         edges.push([funcs[i].name, callee]);
@@ -56,7 +68,7 @@ function extractCallGraph(source: string): { nodes: string[]; edges: [string, st
 export function analyzeSource(source: string, entry?: string): AnalyzeResult {
   const { nodes, edges } = extractCallGraph(source);
   const adj = buildAdj(nodes, edges);
-  const e = entry ?? nodes[0] ?? "";
+  const e = entry ?? nodes[0] ?? '';
   const reachableFromEntry = e ? bfsReachable(adj, e) : [];
   const cent = centrality(nodes, edges);
   const dia = diameter(nodes, adj);
@@ -65,6 +77,6 @@ export function analyzeSource(source: string, entry?: string): AnalyzeResult {
 }
 
 export function analyze(opts: { file: string; entry?: string }): AnalyzeResult {
-  const source = fs.readFileSync(opts.file, "utf8");
+  const source = fs.readFileSync(opts.file, 'utf8');
   return analyzeSource(source, opts.entry);
 }

@@ -1,48 +1,59 @@
-import * as fs from "node:fs";
-import { orchestrateAdaptive } from "../skills/orchestrator/orchestrator";
-import { appendEvent } from "../skills/learning/telemetry";
-import { assertFileExists } from "../skills/hardening/guard";
-import type { Task } from "../skills/orchestrator/router";
-import { searchCommand } from "./search";
-import { testgenCommand } from "./testgen";
-import { analyzeCommand } from "./analyze";
-import { refactorCommand } from "./refactor";
-import { runVqe } from "../skills/vqe-agent/vqe";
-import { runQaoa } from "../skills/qaoa-agent/qaoa";
+import * as fs from 'node:fs';
+import { orchestrateAdaptive } from '../skills/orchestrator/orchestrator';
+import { appendEvent } from '../skills/learning/telemetry';
+import { assertFileExists } from '../skills/hardening/guard';
+import type { Task } from '../skills/orchestrator/router';
+import { searchCommand } from './search';
+import { testgenCommand } from './testgen';
+import { analyzeCommand } from './analyze';
+import { refactorCommand } from './refactor';
+import { runQaoa } from '../skills/qaoa-agent/qaoa';
 
-function parseTask(args: string[]): { task: Task; rest: string[]; nVars?: number; trivial?: boolean } {
-  let task: Task = "search";
+function parseTask(args: string[]): {
+  task: Task;
+  rest: string[];
+  nVars?: number;
+  trivial?: boolean;
+} {
+  let task: Task = 'search';
   let nVars: number | undefined;
   let trivial: boolean | undefined;
   const rest: string[] = [];
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--task" && args[i + 1]) task = args[++i] as Task;
-    else if (args[i] === "--vars" && args[i + 1]) { const v = parseInt(args[++i], 10); if (Number.isNaN(v) || v <= 0) throw new Error("qwispr: invalid --vars"); nVars = v; }
-    else if (args[i] === "--trivial") trivial = true;
+    if (args[i] === '--task' && args[i + 1]) task = args[++i] as Task;
+    else if (args[i] === '--vars' && args[i + 1]) {
+      const v = parseInt(args[++i], 10);
+      if (Number.isNaN(v) || v <= 0) throw new Error('qwispr: invalid --vars');
+      nVars = v;
+    } else if (args[i] === '--trivial') trivial = true;
     else rest.push(args[i]);
   }
   // infer nVars from --qubo if not explicit
   if (nVars === undefined) {
-    const qi = rest.indexOf("--qubo");
+    const qi = rest.indexOf('--qubo');
     if (qi !== -1 && rest[qi + 1]) {
       try {
         assertFileExists(rest[qi + 1]);
-        const data = JSON.parse(fs.readFileSync(rest[qi + 1]!, "utf8")) as Record<string, unknown>;
-        const Q = (data.Q ?? data.costQubo) as unknown;
+        const data = JSON.parse(fs.readFileSync(rest[qi + 1], 'utf8')) as Record<string, unknown>;
+        const Q = data.Q ?? data.costQubo;
         if (Array.isArray(Q)) nVars = (Q as unknown[]).length;
-      } catch { /* ignore */ }
+      } catch {
+        /* ignore */
+      }
     }
   }
   // infer from --file for analyze/refactor/testgen: count trivial as small file
   if (nVars === undefined && trivial === undefined) {
-    const fi = rest.indexOf("--file");
+    const fi = rest.indexOf('--file');
     if (fi !== -1 && rest[fi + 1]) {
       try {
-        const src = fs.readFileSync(rest[fi + 1], "utf8");
+        const src = fs.readFileSync(rest[fi + 1], 'utf8');
         // heuristic: number of functions as proxy for nVars
         const funcs = (src.match(/function\s+\w+/g) || []).length;
         if (funcs > 0) nVars = funcs;
-      } catch { /* ignore */ }
+      } catch {
+        /* ignore */
+      }
     }
   }
   return { task, rest, nVars, trivial };
@@ -56,35 +67,47 @@ export async function orchestratorCommand(args: string[]) {
   let result: unknown = null;
   let success = true;
   try {
-    if (task === "search") {
+    if (task === 'search') {
       result = searchCommand(rest);
-    } else if (task === "resolve") {
-      const qi = rest.indexOf("--qubo");
+    } else if (task === 'resolve') {
+      const qi = rest.indexOf('--qubo');
       if (qi !== -1 && rest[qi + 1]) {
-        assertFileExists(rest[qi + 1]!);
+        assertFileExists(rest[qi + 1]);
         let data: unknown;
-        try { data = JSON.parse(fs.readFileSync(rest[qi + 1]!, "utf8")) as unknown; } catch (e: unknown) { throw new Error(`qwispr: invalid JSON in ${rest[qi + 1]}: ${(e as Error).message}`); }
+        try {
+          data = JSON.parse(fs.readFileSync(rest[qi + 1], 'utf8')) as unknown;
+        } catch (e: unknown) {
+          throw new Error(`qwispr: invalid JSON in ${rest[qi + 1]}: ${(e as Error).message}`);
+        }
         const d = data as Record<string, unknown>;
         const Q = (d.Q ?? d.costQubo) as number[][];
-        if (decision.route === "quantum") result = await runQaoa({ Q });
+        if (decision.route === 'quantum') result = await runQaoa({ Q });
         else {
           const n = Q.length;
-          let best = Infinity, bestBs = "";
+          let best = Infinity,
+            bestBs = '';
           for (let bits = 0; bits < 1 << n; bits++) {
             const bv = Array.from({ length: n }, (_, k) => (bits >> k) & 1);
-            const e = Q.reduce((s: number, row: number[], i: number) => s + row.reduce((a: number, v: number, j: number) => a + v * bv[i] * bv[j], 0), 0);
-            if (e < best) { best = e; bestBs = bv.slice().reverse().join(""); }
+            const e = Q.reduce(
+              (s: number, row: number[], i: number) =>
+                s + row.reduce((a: number, v: number, j: number) => a + v * bv[i] * bv[j], 0),
+              0
+            );
+            if (e < best) {
+              best = e;
+              bestBs = bv.slice().reverse().join('');
+            }
           }
-          result = { bitstring: bestBs, energy: best, route: "classical" };
+          result = { bitstring: bestBs, energy: best, route: 'classical' };
         }
       } else {
-        result = { note: "no --qubo provided, routing only", decision };
+        result = { note: 'no --qubo provided, routing only', decision };
       }
-    } else if (task === "testgen") {
+    } else if (task === 'testgen') {
       result = await testgenCommand(rest);
-    } else if (task === "analyze") {
+    } else if (task === 'analyze') {
       result = analyzeCommand(rest);
-    } else if (task === "refactor") {
+    } else if (task === 'refactor') {
       result = refactorCommand(rest);
     } else {
       throw new Error(`unknown task: ${task}`);
@@ -94,10 +117,19 @@ export async function orchestratorCommand(args: string[]) {
     throw e;
   } finally {
     const wallMs = Date.now() - t0;
-    if (process.env.QWISPR_TELEMETRY === "1") {
+    if (process.env.QWISPR_TELEMETRY === '1') {
       try {
-        appendEvent({ ts: Date.now(), task, route: decision.route, nVars: nVars ?? 0, wallMs, success });
-      } catch { /* ignore */ }
+        appendEvent({
+          ts: Date.now(),
+          task,
+          route: decision.route,
+          nVars: nVars ?? 0,
+          wallMs,
+          success,
+        });
+      } catch {
+        /* ignore */
+      }
     }
   }
   return { ...decision, task, result };

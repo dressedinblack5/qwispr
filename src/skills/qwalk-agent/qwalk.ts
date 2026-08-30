@@ -6,7 +6,10 @@ export function bfsReachable(adj: Map<string, string[]>, entry: string): string[
   while (q.length) {
     const cur = q.shift()!;
     for (const nb of adj.get(cur) ?? []) {
-      if (!visited.has(nb)) { visited.add(nb); q.push(nb); }
+      if (!visited.has(nb)) {
+        visited.add(nb);
+        q.push(nb);
+      }
     }
   }
   return [...visited];
@@ -32,7 +35,10 @@ export function diameter(nodes: string[], adj: Map<string, string[]>): number {
     while (q.length) {
       const cur = q.shift()!;
       for (const nb of adj.get(cur) ?? []) {
-        if (!dist.has(nb)) { dist.set(nb, dist.get(cur)! + 1); q.push(nb); }
+        if (!dist.has(nb)) {
+          dist.set(nb, dist.get(cur)! + 1);
+          q.push(nb);
+        }
       }
     }
     for (const d of dist.values()) if (d > maxD) maxD = d;
@@ -41,7 +47,10 @@ export function diameter(nodes: string[], adj: Map<string, string[]>): number {
 }
 
 export function hotSpots(cent: Record<string, number>, k = 3): string[] {
-  return Object.entries(cent).sort((a, b) => b[1] - a[1]).slice(0, k).map(([n]) => n);
+  return Object.entries(cent)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, k)
+    .map(([n]) => n);
 }
 
 export function buildAdj(nodes: string[], edges: [string, string][]): Map<string, string[]> {

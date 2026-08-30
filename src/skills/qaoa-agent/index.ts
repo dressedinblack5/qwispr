@@ -1,1 +1,1 @@
-export * from "./qaoa.js";
+export * from './qaoa.js';

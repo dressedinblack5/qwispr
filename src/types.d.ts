@@ -1,4 +1,4 @@
-declare module "tree-sitter" {
+declare module 'tree-sitter' {
   export class Parser {
     setLanguage(language: any): void;
     parse(text: string): Tree;
@@ -17,27 +17,27 @@ declare module "tree-sitter" {
   }
 }
 
-declare module "tree-sitter-javascript" {
+declare module 'tree-sitter-javascript' {
   const language: any;
   export default language;
 }
 
-declare module "tree-sitter-javascript/bindings/node/index.js" {
+declare module 'tree-sitter-javascript/bindings/node/index.js' {
   const language: any;
   export default language;
 }
 
-declare module "tree-sitter-typescript/bindings/node/index.js" {
+declare module 'tree-sitter-typescript/bindings/node/index.js' {
   export const typescript: any;
   export const tsx: any;
 }
 
-declare module "pennylane" {
+declare module 'pennylane' {
   export const qml: any;
   export const qnode: any;
 }
 
-declare module "pennylane.numpy" {
+declare module 'pennylane.numpy' {
   export const random: any;
   export const ones: any;
   export const array: any;
@@ -45,7 +45,7 @@ declare module "pennylane.numpy" {
   export const seed: any;
 }
 
-declare module "semver" {
+declare module 'semver' {
   export function satisfies(version: string, range: string): boolean;
   export function gt(a: string, b: string): boolean;
   export function rcompare(a: string, b: string): number;

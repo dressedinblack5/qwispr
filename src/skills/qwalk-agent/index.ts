@@ -1,1 +1,1 @@
-export * from "./qwalk.js";
+export * from './qwalk.js';

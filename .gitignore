@@ -1,9 +1,17 @@
 node_modules/
 dist/
 .omo/codegraph/
+.omo/run-continuation/
+results/
+report/
+benchmarks/lockfiles/
 *.log
 .DS_Store
 .env
 .codegraph
 __pycache__/
 *.pyc
+*.tsbuildinfo
+.nyc_output/
+coverage/
+*.vsix

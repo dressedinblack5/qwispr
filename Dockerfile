@@ -6,8 +6,8 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci --omit=dev --ignore-scripts || npm install --omit=dev --ignore-scripts
 COPY dist ./dist
-COPY src/skills/vqe-agent/vqe.py ./dist/src/skills/vqe-agent/vqe.py
-COPY src/skills/qaoa-agent/qaoa.py ./dist/src/skills/qaoa-agent/qaoa.py
-COPY src/skills/hardware/qpu.py ./dist/src/skills/hardware/qpu.py
+COPY src/skills/vqe-agent/vqe.py ./dist/skills/vqe-agent/vqe.py
+COPY src/skills/qaoa-agent/qaoa.py ./dist/skills/qaoa-agent/qaoa.py
+COPY src/skills/hardware/qpu.py ./dist/skills/hardware/qpu.py
 COPY README.md ./
-ENTRYPOINT ["node", "dist/src/cli.js"]
+ENTRYPOINT ["node", "dist/cli.js"]

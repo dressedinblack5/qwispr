@@ -1,12 +1,8 @@
 #!/usr/bin/env node
 // ponytail: BENCH_N + timeout 10s, 60 casos solo nightly — full suite only in nightly, CI uses BENCH_N=5
-import fs from "fs";
-import path from "path";
-import { spawn } from "child_process";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fs = require("fs");
+const path = require("path");
+const { spawn } = require("child_process");
 
 const TIMEOUT_MS = 10000;
 const BENCH_N = process.env.BENCH_N ? parseInt(process.env.BENCH_N, 10) : null;

@@ -4,18 +4,18 @@
       "id": "real-4q-1",
       "solver": "quantum",
       "success": true,
-      "wallMs": 3342
+      "wallMs": 3258
     },
     {
       "id": "real-5q-2",
       "solver": "quantum",
       "success": true,
-      "wallMs": 3980
+      "wallMs": 3962
     }
   ],
   "summary": {
     "successRate": 1,
-    "avgMs": 3661,
-    "p95Ms": 3980
+    "avgMs": 3610,
+    "p95Ms": 3962
   }
 }

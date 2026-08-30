@@ -1,7 +1,5 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import { Backend, getBackend } from './backend';
-import { spawnWithTimeout } from '../hardening/guard';
+import type { Backend } from './backend';
+import { getBackend } from './backend';
 
 export interface QpuStatus {
   backend: Backend;
@@ -11,10 +9,6 @@ export interface QpuStatus {
 }
 
 export type QpuResult = Record<string, unknown>;
-
-function isQpuResult(v: unknown): v is QpuResult {
-  return typeof v === 'object' && v !== null;
-}
 
 export function getQpuStatus(): QpuStatus {
   const backend = getBackend();

@@ -189,8 +189,8 @@ export async function generateTestInputs(opts: {
     const cmp = c.match(/^(\w+)\s*(>=|<=|>|<|===|==|!==|!=)\s*(-?\d+|\w+)$/);
     if (!cmp) return null;
     const [, left, op, right] = cmp;
-    const lv = left in env ? env[left]! : Number(left);
-    const rv = right in env ? env[right]! : Number(right);
+    const lv = left in env ? env[left] : Number(left);
+    const rv = right in env ? env[right] : Number(right);
     if (Number.isNaN(lv) || Number.isNaN(rv)) return null;
     switch (op) {
       case '>':

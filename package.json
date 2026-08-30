@@ -18,6 +18,7 @@
     "benchmark:real": "node scripts/benchmark.js real",
     "benchmark": "node scripts/benchmark.js synthetic",
     "benchmark:report": "node scripts/benchmark.js report",
+    "ci:smoke": "npm run build && npm test && BENCH_N=2 npm run benchmark",
     "docs:dev": "vitepress dev docs/site",
     "docs:build": "vitepress build docs/site",
     "prepublishOnly": "npm run build"

@@ -2,11 +2,24 @@
   "$schema": "https://openaxe.dev/schema.json",
   "name": "qwispr",
   "version": "0.1.0",
-  "description": "Quantum-enhanced general coding assistant on OpenAxe",
+  "description": "Hybrid quantum/classical code intelligence — QAOA, VQE, Grover, QWalk, QSVM on PennyLane",
   "workspace": ".",
   "skills": {
     "directory": "skills",
-    "autoLoad": ["code-graph", "problem-encoder", "qaoa-agent", "dep-agent"]
+    "autoLoad": ["analyze", "search", "testgen", "refactor", "orchestrator", "hardware", "learning", "mcp", "qaoa", "vqe", "qwalk", "grover"]
+  },
+  "mcp": {
+    "servers": {
+      "qwispr": {
+        "command": "node",
+        "args": ["dist/cli.js", "mcp", "--stdio"],
+        "env": {
+          "QWISPR_BACKEND": "simulator",
+          "QWISPR_TELEMETRY": "0"
+        },
+        "tools": ["analyze", "search", "testgen", "refactor", "hardware"]
+      }
+    }
   },
   "agents": {
     "directory": "agents",

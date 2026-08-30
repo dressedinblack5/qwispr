@@ -28,7 +28,7 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Install Python deps
-        run: pip install pennylane --quiet || true
+        run: pip install pennylane
 
       - name: Build
         run: npm run build --if-present

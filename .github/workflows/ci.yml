@@ -5,92 +5,37 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      full:
-        description: 'Run full 60-case benchmark'
-        type: boolean
-        default: false
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npx tsc --noEmit
 
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run typecheck
+          cache: npm
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
-
-  bench-smoke:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
-      - run: pip install pennylane --break-system-packages
-      - run: npm ci
-      - run: npm run build
-      - run: BENCH_N=2 npm run ci:smoke
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: bench-smoke-report
-          path: benchmarks/report/
-          if-no-files-found: warn
+          cache: pip
 
-  benchmark:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' && inputs.full == true
-    timeout-minutes: 60
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-      - run: pip install pennylane --break-system-packages
-      - run: npm ci
-      - run: npm run build
-      - run: npm run baseline
-      - run: npm run quantum-run
-      - run: npm run compare
-      - uses: actions/upload-artifact@v4
-        with:
-          name: benchmark-report
-          path: benchmarks/report/
-          retention-days: 30
+      - name: Install JS deps
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Install Python deps
+        run: pip install pennylane
+
+      - name: Test
+        run: npm test
+
+      - name: Benchmark smoke
+        run: BENCH_N=2 npm run benchmark

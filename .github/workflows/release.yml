@@ -25,9 +25,14 @@ jobs:
           python-version: '3.11'
           cache: pip
 
-      - run: npm ci
-      - run: pip install pennylane --quiet || true
-      - run: npm run build
+      - name: Install JS deps
+        run: npm ci
+
+      - name: Install Python deps
+        run: pip install pennylane
+
+      - name: Build
+        run: npm run build
 
       - name: Publish to npm
         run: npm publish --access public

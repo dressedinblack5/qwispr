@@ -1,8 +1,0 @@
-{
-  "suite": "testgen",
-  "description": "Test generation tasks — cover conflict edge cases",
-  "files": [
-    "real/real-01-react-peer.json",
-    "real/real-05-diamond-deps.json"
-  ]
-}

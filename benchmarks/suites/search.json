@@ -1,8 +1,0 @@
-{
-  "suite": "search",
-  "description": "Code search tasks — locate conflict sources",
-  "files": [
-    "real/real-03-eslint-peer.json",
-    "real/real-05-diamond-deps.json"
-  ]
-}

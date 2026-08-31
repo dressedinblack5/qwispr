@@ -1,9 +1,0 @@
-{
-  "suite": "refactor",
-  "description": "Refactor tasks — migrate peer deps to compatible ranges",
-  "files": [
-    "real/real-01-react-peer.json",
-    "real/real-02-webpack-peer.json",
-    "real/real-04-typescript-peer.json"
-  ]
-}

@@ -1,5 +1,7 @@
 export function parseIntSafe(value: string, label: string): number {
-  const v = parseInt(value, 10);
+  const trimmed = value.trim();
+  if (!/^\d+$/.test(trimmed)) throw new Error(`qwispr: invalid ${label}`);
+  const v = parseInt(trimmed, 10);
   if (Number.isNaN(v) || v <= 0) throw new Error(`qwispr: invalid ${label}`);
   return v;
 }

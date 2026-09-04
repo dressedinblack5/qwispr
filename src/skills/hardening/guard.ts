@@ -3,8 +3,10 @@ import * as path from 'node:path';
 import { spawn } from 'node:child_process';
 
 export function getCalibration(): number {
-  const v = parseFloat(process.env.QWISPR_CALIBRATION ?? '1.0');
-  return isNaN(v) ? 1.0 : v;
+  const raw = (process.env.QWISPR_CALIBRATION ?? '1.0').trim();
+  if (!/^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/.test(raw)) return 1.0;
+  const v = parseFloat(raw);
+  return Number.isFinite(v) ? v : 1.0;
 }
 
 export function assertFileExists(p: string): void {
@@ -43,6 +45,22 @@ export function assertSafePattern(pattern: string): void {
   if (nested.test(pattern)) {
     throw new Error(`qwispr: unsafe pattern (potential ReDoS): ${pattern}`);
   }
+  if (/\([^)]*[*+][^)]*\)\s*(?:[*+]|\{\d)/.test(pattern)) {
+    throw new Error(`qwispr: unsafe pattern (potential ReDoS): ${pattern}`);
+  }
+  if (/\([^)]*\{\d[^}]*\}[^)]*\)\s*(?:[*+]|\{\d)/.test(pattern)) {
+    throw new Error(`qwispr: unsafe pattern (potential ReDoS): ${pattern}`);
+  }
+  // bounded-quantifier blowup like a{100,200} — flag large repetitions
+  const quantRe = /\{(\d+)(?:,\s*(\d*))?\}/g;
+  let m: RegExpExecArray | null;
+  while ((m = quantRe.exec(pattern)) !== null) {
+    const a = parseInt(m[1], 10);
+    const b = m[2] !== undefined && m[2] !== '' ? parseInt(m[2], 10) : NaN;
+    if (a >= 100 || (!Number.isNaN(b) && b >= 100)) {
+      throw new Error(`qwispr: unsafe pattern (potential ReDoS): ${pattern}`);
+    }
+  }
   if (pattern.length > 50 && /\([^)]*\+[^)]*\)/.test(pattern)) {
     throw new Error(`qwispr: unsafe pattern (potential ReDoS): ${pattern}`);
   }
@@ -69,7 +87,23 @@ export function spawnWithTimeout(
     const child = spawn(cmd, args, { stdio: ['pipe', 'pipe', 'pipe'] });
     let stdout = '';
     let stderr = '';
+    let stdoutBytes = 0;
+    let stderrBytes = 0;
     let killed = false;
+    let settled = false;
+
+    const settleReject = (err: Error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      reject(err);
+    };
+    const settleResolve = (val: { stdout: string; stderr: string }) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      resolve(val);
+    };
 
     const kill = () => {
       killed = true;
@@ -89,17 +123,21 @@ export function spawnWithTimeout(
 
     const timer = setTimeout(() => {
       kill();
-      reject(new Error(`qwispr: process timed out after ${timeout}ms: ${cmd} ${args.join(' ')}`));
+      settleReject(new Error(`qwispr: process timed out after ${timeout}ms: ${cmd} ${args.join(' ')}`));
     }, timeout);
 
     const onData = (chunk: Buffer, isStdout: boolean) => {
       const s = chunk.toString();
-      if (isStdout) stdout += s;
-      else stderr += s;
-      if (stdout.length + stderr.length > maxBuffer) {
+      if (isStdout) {
+        stdout += s;
+        stdoutBytes += chunk.length;
+      } else {
+        stderr += s;
+        stderrBytes += chunk.length;
+      }
+      if (stdoutBytes + stderrBytes > maxBuffer) {
         kill();
-        clearTimeout(timer);
-        reject(new Error(`qwispr: process output exceeded maxBuffer ${maxBuffer}: ${cmd}`));
+        settleReject(new Error(`qwispr: process output exceeded maxBuffer ${maxBuffer}: ${cmd}`));
       }
     };
 
@@ -107,31 +145,50 @@ export function spawnWithTimeout(
     child.stderr.on('data', d => onData(d, false));
 
     child.on('error', (err: NodeJS.ErrnoException) => {
-      clearTimeout(timer);
+      if (settled) return;
       if (err.code === 'ENOENT') {
-        reject(new Error(`qwispr: spawn failed (ENOENT): ${cmd} not found`));
+        settleReject(new Error(`qwispr: spawn failed (ENOENT): ${cmd} not found`));
       } else {
-        reject(new Error(`qwispr: spawn failed: ${err.message}`));
+        settleReject(new Error(`qwispr: spawn failed: ${err.message}`));
       }
     });
 
     child.on('close', code => {
+      if (settled) return;
       clearTimeout(timer);
-      if (killed) return; // already rejected via timeout/maxBuffer
+      if (killed) return;
       if (code !== 0) {
-        reject(new Error(stderr || `qwispr: ${cmd} exited ${code}`));
+        settleReject(new Error(stderr || `qwispr: ${cmd} exited ${code}`));
         return;
       }
-      resolve({ stdout, stderr });
+      settleResolve({ stdout, stderr });
     });
 
     if (opts.input !== undefined) {
       if (child.stdin) {
-        child.stdin.write(opts.input);
-        child.stdin.end();
+        // EPIPE guard: python worker may exit before reading stdin
+        child.stdin.on('error', () => undefined);
+        try {
+          child.stdin.write(opts.input);
+        } catch {
+          void 0;
+        }
+        try {
+          child.stdin.end();
+        } catch {
+          void 0;
+        }
       }
     } else {
-      if (child.stdin) child.stdin.end();
+      if (child.stdin) {
+        // EPIPE guard: see above
+        child.stdin.on('error', () => undefined);
+        try {
+          child.stdin.end();
+        } catch {
+          void 0;
+        }
+      }
     }
   });
 }

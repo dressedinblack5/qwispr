@@ -14,8 +14,14 @@ export function getQpuStatus(): QpuStatus {
   const backend = getBackend();
   const hasToken = !!process.env.QISKIT_TOKEN?.trim();
   const dryRun = process.env.QWISPR_QPU_DRYRUN === '1';
-  const raw = parseInt(process.env.QWISPR_QPU_SHOTS ?? '1024', 10);
-  const shots = Number.isNaN(raw) ? 1024 : Math.min(10000, Math.max(1, raw));
+  const rawStr = (process.env.QWISPR_QPU_SHOTS ?? '1024').trim();
+  let shots: number;
+  if (!/^\d+$/.test(rawStr)) {
+    shots = 1024;
+  } else {
+    const parsed = parseInt(rawStr, 10);
+    shots = Number.isNaN(parsed) ? 1024 : Math.min(10000, Math.max(1, parsed));
+  }
   return { backend, hasToken, dryRun, shots };
 }
 
@@ -27,14 +33,17 @@ export function applyReadoutMitigation(
   const keys = Object.keys(counts);
   if (keys.length === 0) return {};
   const n = keys[0].length;
+  let p = Number.isFinite(flipProb) ? flipProb : 0.02;
+  p = Math.max(0, Math.min(0.5, p));
+  if (n > 0) p = Math.min(p, 1 / n);
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
   if (total === 0) return { ...counts };
   const corrected: Record<string, number> = {};
   for (const bs of keys) {
-    let v = counts[bs] * (1 - n * flipProb);
+    let v = counts[bs] * (1 - n * p);
     for (let i = 0; i < n; i++) {
       const flipped = bs.slice(0, i) + (bs[i] === '0' ? '1' : '0') + bs.slice(i + 1);
-      if (counts[flipped] !== undefined) v += counts[flipped] * flipProb;
+      if (counts[flipped] !== undefined) v += counts[flipped] * p;
     }
     corrected[bs] = Math.max(0, v);
   }

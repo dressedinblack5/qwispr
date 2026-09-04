@@ -8,10 +8,14 @@ export async function vqeCommand(args: string[]) {
     layers = 2,
     iters = 50;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--qubo' && args[i + 1]) quboFile = args[++i];
-    else if (args[i] === '--layers' && args[i + 1]) {
+    if (args[i] === '--qubo') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --qubo');
+      quboFile = args[++i];
+    } else if (args[i] === '--layers') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --layers');
       layers = parseIntSafe(args[++i], '--layers');
-    } else if (args[i] === '--iters' && args[i + 1]) {
+    } else if (args[i] === '--iters') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --iters');
       iters = parseIntSafe(args[++i], '--iters');
     }
   }

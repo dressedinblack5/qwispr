@@ -6,9 +6,14 @@ export function searchCommand(args: string[]) {
     files = '',
     top = 10;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--pattern' && args[i + 1]) pattern = args[++i];
-    else if (args[i] === '--files' && args[i + 1]) files = args[++i];
-    else if (args[i] === '--top' && args[i + 1]) {
+    if (args[i] === '--pattern') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --pattern');
+      pattern = args[++i];
+    } else if (args[i] === '--files') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --files');
+      files = args[++i];
+    } else if (args[i] === '--top') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --top');
       top = parseIntSafe(args[++i], '--top');
     }
   }

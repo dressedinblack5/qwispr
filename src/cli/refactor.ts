@@ -5,8 +5,11 @@ export function refactorCommand(args: string[]) {
   let file = '',
     top = 5;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--file' && args[i + 1]) file = args[++i];
-    else if (args[i] === '--top' && args[i + 1]) {
+    if (args[i] === '--file') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --file');
+      file = args[++i];
+    } else if (args[i] === '--top') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --top');
       top = parseIntSafe(args[++i], '--top');
     }
   }

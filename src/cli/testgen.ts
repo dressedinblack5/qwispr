@@ -6,9 +6,14 @@ export async function testgenCommand(args: string[]) {
     fn = '',
     layers = 2;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--file' && args[i + 1]) file = args[++i];
-    else if (args[i] === '--function' && args[i + 1]) fn = args[++i];
-    else if (args[i] === '--layers' && args[i + 1]) {
+    if (args[i] === '--file') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --file');
+      file = args[++i];
+    } else if (args[i] === '--function') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --function');
+      fn = args[++i];
+    } else if (args[i] === '--layers') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --layers');
       layers = parseIntSafe(args[++i], '--layers');
     }
   }

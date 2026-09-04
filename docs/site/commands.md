@@ -4,16 +4,16 @@
 
 | Command | Alias | Description |
 |---------|-------|-------------|
-| `qwispr analyze --file <path> [--entry <name>]` | `code-graph`, `qwalk` | Call-graph + QWalk metrics (reachability, centrality, diameter, hotSpots) |
+| `qwispr analyze --file <path> [--entry <name>]` | `qwalk` | Call-graph + QWalk metrics (reachability, centrality, diameter, hotSpots; diameter `-1` = disconnected) |
 | `qwispr search --pattern <regex> --files <glob> [--top 10]` | `grover` | Grover-ranked code search (regex + glob, amplified ranking) |
 | `qwispr vqe --qubo <file> [--layers N] [--iters N]` | — | VQE ground-state solver for QUBO (test-input generation) |
-| `qwispr testgen --file <path> --function <name> [--layers 2]` | `vqe` (via VQE) | VQE boundary test generation (branch-distance QUBO → VQE) |
+| `qwispr testgen --file <path> --function <name> [--layers 2]` | — | VQE boundary test generation (branch-distance QUBO → VQE) |
 | `qwispr refactor --file <path> [--top 5]` | — | QWalk+QML refactoring candidates (centrality × (1-cohesion)) |
 | `qwispr run --task <task> [args...] [--backend ...]` | `orchestrate` | Hybrid router: `resolve\|search\|testgen\|analyze\|refactor` |
 | `qwispr hardware --list` | `backend` | List backends + current device |
 | `qwispr mcp` | — | MCP stdio server (tools/list + tools/call, 5 tools) |
 
-`--backend` / `QWISPR_BACKEND`: `simulator` (default.qubit), `lightning` (lightning.qubit), `ibm` (qiskit.ibmq, stub), `braket` (braket.aws.qubit, stub). Also `QWISPR_DEVICE` passthrough (e.g. `lightning.qubit`).
+`--backend` / `QWISPR_BACKEND`: `simulator` (default.qubit), `lightning` (lightning.qubit). Also `QWISPR_DEVICE` passthrough (e.g. `lightning.qubit`).
 
 `qwispr run --task resolve --qubo <file>` — QUBO dependency resolution: classical brute-force (n≤4) else QAOA.
 
@@ -40,7 +40,7 @@ Config: `qwispr.cliPath` overrides CLI path; `qwispr.backend` for future use.
 
 | Var | Values | Default |
 |-----|--------|---------|
-| `QWISPR_BACKEND` | `simulator\|lightning\|ibm\|braket` | `simulator` |
+| `QWISPR_BACKEND` | `simulator\|lightning` | `simulator` |
 | `QWISPR_DEVICE` | device string (e.g. `lightning.qubit`) | — (derived from backend) |
 | `QWISPR_LAYERS` | int | per-command `--layers` |
 | `QWISPR_ITERS` | int | per-command `--iters` |

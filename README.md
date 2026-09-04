@@ -77,7 +77,7 @@ qwispr mcp --stdio
 
 | Command | Alias | Description |
 |---------|-------|-------------|
-| `analyze` | `qwalk` | Call-graph + QWalk metrics (reachability, centrality, diameter, hotSpots) |
+| `analyze` | `qwalk` | Call-graph + QWalk metrics (reachability, centrality, diameter, hotSpots; diameter `-1` = disconnected) |
 | `search` | `grover` | Grover-ranked regex search over glob |
 | `vqe` | — | VQE ground-state for QUBO |
 | `testgen` | — | VQE boundary test inputs for a function |
@@ -188,14 +188,15 @@ QWISPR_BACKEND=lightning BENCH_N=5 npm run benchmark
 | `QWISPR_BACKEND` | `simulator` | `simulator` \| `lightning` |
 | `QWISPR_DEVICE` | — | Direct PennyLane device string (e.g., `lightning.qubit`) |
 | `QWISPR_QPU_SHOTS` | `1024` | Shots for QPU (clamp 1..10000) |
-| `QWISPR_LAYERS` | `2` | VQE/QAOA ansatz layers |
-| `QWISPR_ITERS` | `50` | Optimizer iterations |
+| `QWISPR_LAYERS` | `2` | VQE/QAOA ansatz layers (honored by python workers/benchmark only; CLI `--layers` overrides) |
+| `QWISPR_ITERS` | `50` | Optimizer iterations (honored by python workers/benchmark only; CLI `--iters` overrides) |
 | `QWISPR_TELEMETRY` | `0` | Set `1` to enable `~/.qwispr/telemetry.jsonl` |
 | `QWISPR_TELEMETRY_PATH` | `~/.qwispr/telemetry.jsonl` | Custom telemetry path |
-| `QWISPR_CALIBRATION` | `1.0` | Physical drift multiplier (knob for hardware) |
+| `QWISPR_CALIBRATION` | `1.0` | Reserved/unused — `getCalibration()` is currently unwired (no runtime effect) |
 | `QISKIT_TOKEN` | — | IBM Quantum token for QPU pilot |
 | `QWISPR_QPU_DRYRUN` | `0` | Set `1` for dry-run QPU path |
-| `QWISPR_ALLOW_ABSOLUTE` | `0` | Allow absolute globs in search |
+| `QWISPR_ALLOW_ABSOLUTE` | `0` | Bypass workspace-root jail (search globs + analyze/refactor/testgen `--file`) |
+| `QISKIT_TOKEN` | — | IBM Quantum token, reported in `hardware` status (`hasToken`); live QPU calls not implemented — set `QWISPR_QPU_DRYRUN=1` for the simulated path |
 
 ---
 

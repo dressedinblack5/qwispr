@@ -21,8 +21,11 @@ function parseTask(args: string[]): {
   let trivial: boolean | undefined;
   const rest: string[] = [];
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--task' && args[i + 1]) task = args[++i] as Task;
-    else if (args[i] === '--vars' && args[i + 1]) {
+    if (args[i] === '--task') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --task');
+      task = args[++i] as Task;
+    } else if (args[i] === '--vars') {
+      if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --vars');
       nVars = parseIntSafe(args[++i], '--vars');
     } else if (args[i] === '--trivial') trivial = true;
     else rest.push(args[i]);
@@ -30,21 +33,33 @@ function parseTask(args: string[]): {
   // infer nVars from --qubo if not explicit
   if (nVars === undefined) {
     const qi = rest.indexOf('--qubo');
-    if (qi !== -1 && rest[qi + 1]) {
+    if (qi !== -1) {
+      if (qi + 1 >= rest.length || rest[qi + 1] === undefined || rest[qi + 1].startsWith('-')) {
+        throw new Error('qwispr: missing value for --qubo');
+      }
       try {
         assertFileExists(rest[qi + 1]);
-        const data = JSON.parse(fs.readFileSync(rest[qi + 1], 'utf8')) as Record<string, unknown>;
+        const raw = fs.readFileSync(rest[qi + 1], 'utf8');
+        let data: Record<string, unknown>;
+        try {
+          data = JSON.parse(raw) as Record<string, unknown>;
+        } catch (e: unknown) {
+          throw new Error(`qwispr: invalid JSON in ${rest[qi + 1]}: ${(e as Error).message}`);
+        }
         const Q = data.Q ?? data.costQubo;
         if (Array.isArray(Q)) nVars = (Q as unknown[]).length;
-      } catch {
-        /* ignore */
+      } catch (e: unknown) {
+        if ((e as Error).message.startsWith('qwispr: invalid JSON') || (e as Error).message.startsWith('qwispr: file not found') || (e as Error).message.startsWith('qwispr: file too large') || (e as Error).message.startsWith('qwispr: symlink')) throw e;
       }
     }
   }
   // infer from --file for analyze/refactor/testgen: count trivial as small file
   if (nVars === undefined && trivial === undefined) {
     const fi = rest.indexOf('--file');
-    if (fi !== -1 && rest[fi + 1]) {
+    if (fi !== -1) {
+      if (fi + 1 >= rest.length || rest[fi + 1] === undefined || rest[fi + 1].startsWith('-')) {
+        throw new Error('qwispr: missing value for --file');
+      }
       try {
         const src = fs.readFileSync(rest[fi + 1], 'utf8');
         // heuristic: number of functions as proxy for nVars
@@ -70,7 +85,10 @@ export async function orchestratorCommand(args: string[]) {
       result = searchCommand(rest);
     } else if (task === 'resolve') {
       const qi = rest.indexOf('--qubo');
-      if (qi !== -1 && rest[qi + 1]) {
+      if (qi !== -1) {
+        if (qi + 1 >= rest.length || rest[qi + 1] === undefined || rest[qi + 1].startsWith('-')) {
+          throw new Error('qwispr: missing value for --qubo');
+        }
         assertFileExists(rest[qi + 1]);
         let data: unknown;
         try {

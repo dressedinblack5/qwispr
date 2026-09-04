@@ -77,7 +77,7 @@ function printHelp() {
   console.log('  --help, -h         show this help');
   console.log('');
   console.log(
-    'Env: QWISPR_BACKEND, QWISPR_DEVICE (e.g. lightning.qubit), QWISPR_LAYERS, QWISPR_ITERS, QWISPR_CALIBRATION'
+    'Env: QWISPR_BACKEND, QWISPR_DEVICE, QWISPR_LAYERS, QWISPR_ITERS, QWISPR_CALIBRATION, QWISPR_QPU_SHOTS, QWISPR_QPU_DRYRUN, QWISPR_TELEMETRY, QWISPR_TELEMETRY_PATH, QWISPR_ALLOW_ABSOLUTE, QISKIT_TOKEN'
   );
 }
 
@@ -104,7 +104,10 @@ async function main() {
   }
   // passthrough --backend for run/orchestrate/vqe
   const bi = args.indexOf('--backend');
-  if (bi !== -1 && args[bi + 1]) {
+  if (bi !== -1) {
+    if (bi + 1 >= args.length || args[bi + 1] === undefined || args[bi + 1].startsWith('-')) {
+      throw new Error('qwispr: missing value for --backend');
+    }
     process.env.QWISPR_BACKEND = args[bi + 1];
     args.splice(bi, 2);
   }
@@ -113,10 +116,14 @@ async function main() {
       layers = 2,
       iters = 50;
     for (let i = 1; i < args.length; i++) {
-      if (args[i] === '--qubo' && args[i + 1]) quboFile = args[++i];
-      else if (args[i] === '--layers' && args[i + 1]) {
+      if (args[i] === '--qubo') {
+        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --qubo');
+        quboFile = args[++i];
+      } else if (args[i] === '--layers') {
+        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --layers');
         layers = parseIntSafe(args[++i], '--layers');
-      } else if (args[i] === '--iters' && args[i + 1]) {
+      } else if (args[i] === '--iters') {
+        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --iters');
         iters = parseIntSafe(args[++i], '--iters');
       }
     }

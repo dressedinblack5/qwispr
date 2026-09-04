@@ -13,6 +13,7 @@ export interface QaoaResult {
 }
 
 export async function runQaoa(input: QaoaInput): Promise<QaoaResult> {
+  if (!input.Q.length) throw new Error('qwispr: empty QUBO matrix (n=0)');
   const candidates = [
     path.join(__dirname, 'qaoa.py'),
     path.join(__dirname, '..', '..', '..', '..', 'src', 'skills', 'qaoa-agent', 'qaoa.py'),

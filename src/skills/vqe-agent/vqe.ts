@@ -14,6 +14,7 @@ export interface VqeResult {
 }
 
 export async function runVqe(input: VqeInput): Promise<VqeResult> {
+  if (!input.costQubo.length) throw new Error('qwispr: empty QUBO matrix (n=0)');
   const candidates = [
     path.join(__dirname, 'vqe.py'),
     path.join(__dirname, '..', '..', '..', '..', 'src', 'skills', 'vqe-agent', 'vqe.py'),

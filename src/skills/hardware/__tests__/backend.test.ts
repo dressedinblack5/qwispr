@@ -14,14 +14,18 @@ describe('hardware backend', () => {
   it('respects env and maps device strings', () => {
     delete process.env.QWISPR_BACKEND;
     delete process.env.QWISPR_DEVICE;
-    expect(getBackend()).toBe(Backend.simulator);
-    expect(getDeviceString()).toBe('default.qubit');
-
-    process.env.QWISPR_BACKEND = 'lightning';
     expect(getBackend()).toBe(Backend.lightning);
     expect(getDeviceString()).toBe('lightning.qubit');
 
+    process.env.QWISPR_BACKEND = 'simulator';
+    expect(getBackend()).toBe(Backend.simulator);
+    expect(getDeviceString()).toBe('default.qubit');
+
     process.env.QWISPR_DEVICE = 'lightning.qubit';
     expect(getBackend()).toBe(Backend.lightning);
+
+    process.env.QWISPR_BACKEND = 'lightning';
+    process.env.QWISPR_DEVICE = 'default.qubit';
+    expect(getBackend()).toBe(Backend.simulator);
   });
 });

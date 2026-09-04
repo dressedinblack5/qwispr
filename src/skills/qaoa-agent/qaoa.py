@@ -56,7 +56,7 @@ def _resolve_device_name():
     if dev:
         return dev
     backend = os.environ.get("QWISPR_BACKEND", "").lower().strip()
-    return _BACKEND_MAP.get(backend, "default.qubit")
+    return _BACKEND_MAP.get(backend, "lightning.qubit")
 
 
 def get_device(n):

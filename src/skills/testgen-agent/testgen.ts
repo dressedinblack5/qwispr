@@ -199,7 +199,7 @@ function buildQubo(params: string[], body: string): number[][] {
 
 function decodeBitstring(bs: string, params: string[]): number[] {
   const needed = params.length * BITS;
-  if (bs.length < needed) throw new Error(`qwispr: bitstring too short: expected ${needed}, got ${bs.length}`);
+  if (bs.length !== needed) throw new Error(`qwispr: bitstring too short: expected ${needed}, got ${bs.length}`);
   const rev = bs.split('').reverse().join('');
   const vals: number[] = [];
   for (let p = 0; p < params.length; p++) {
@@ -341,5 +341,3 @@ export async function generateTestInputs(opts: {
   }
   return { inputs: inputs.slice(0, 3), coverageHint: hint };
 }
-
-export const testgen = generateTestInputs;

@@ -108,7 +108,8 @@ function extractCallGraph(source: string): { nodes: string[]; edges: [string, st
 export function analyzeSource(source: string, entry?: string): AnalyzeResult {
   const { nodes, edges } = extractCallGraph(source);
   const adj = buildAdj(nodes, edges);
-  const e = entry ?? nodes[0] ?? '';
+  // No silent default: without an explicit entry there is no entry to reach from.
+  const e = entry ?? '';
   const reachableFromEntry = e ? bfsReachable(adj, e) : [];
   const cent = centrality(nodes, edges);
   const diaRaw = diameter(nodes, adj);

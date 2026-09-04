@@ -133,7 +133,7 @@ export function search(opts: { pattern: string; files: string; top?: number }): 
     });
   }
   allHits.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line);
-  const top = opts.top ?? 10;
+  const top = Math.max(0, opts.top ?? 10);
   const hits = allHits.slice(0, top);
 
   // Rank via Grover amplification: treat hits as marked items in larger space

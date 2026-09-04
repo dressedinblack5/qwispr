@@ -70,7 +70,7 @@ export function diameter(nodes: string[], adj: Map<string, string[]>): number {
 export function hotSpots(cent: Record<string, number>, k = 3): string[] {
   return Object.entries(cent)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, k)
+    .slice(0, Math.max(0, k))
     .map(([n]) => n);
 }
 

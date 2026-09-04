@@ -59,10 +59,13 @@ export function refactorSource(source: string, file: string, top = 5): RefactorR
     const coh = cohesion[n] ?? 1;
     const score = c * (1 - coh);
     const deg = outDeg.get(n) ?? 0;
+    // Small hubs (1-2 callees) are normal helpers, not split candidates.
     const reason =
       deg === 0
         ? `isolated (centrality ${c.toFixed(2)}, cohesion ${coh.toFixed(2)})`
-        : `high centrality ${c.toFixed(2)} + low cohesion ${coh.toFixed(2)} — ${deg} callees, consider splitting`;
+        : deg < 3
+          ? `small helper (centrality ${c.toFixed(2)}, cohesion ${coh.toFixed(2)}) — ${deg} callee(s), no action suggested`
+          : `high centrality ${c.toFixed(2)} + low cohesion ${coh.toFixed(2)} — ${deg} callees, consider splitting`;
     return {
       file,
       function: n,
@@ -74,7 +77,7 @@ export function refactorSource(source: string, file: string, top = 5): RefactorR
   });
 
   candidates.sort((a, b) => b.score - a.score);
-  return { candidates: candidates.slice(0, top) };
+  return { candidates: candidates.slice(0, Math.max(0, top)) };
 }
 
 export function refactor(opts: { file: string; top?: number }): RefactorResult {

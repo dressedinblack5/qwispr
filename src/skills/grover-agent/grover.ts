@@ -1,7 +1,7 @@
 /** Grover amplitude amplification simulation — analytic, no quantum backend. */
 export function groverIterations(n: number, m: number): number {
   if (m <= 0 || m >= n) return 0;
-  return Math.round((Math.PI / 4) * Math.sqrt(n / m));
+  return Math.floor((Math.PI / 4) * Math.sqrt(n / m));
 }
 
 export function groverProbabilities(n: number, marked: boolean[], iterations?: number): number[] {

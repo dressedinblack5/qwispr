@@ -13,7 +13,7 @@
 | `qwispr hardware --list` | `backend` | List backends + current device |
 | `qwispr mcp` | — | MCP stdio server (tools/list + tools/call, 5 tools) |
 
-`--backend` / `QWISPR_BACKEND`: `simulator` (default.qubit), `lightning` (lightning.qubit). Also `QWISPR_DEVICE` passthrough (e.g. `lightning.qubit`).
+`--backend` / `QWISPR_BACKEND`: `lightning` (lightning.qubit, default), `simulator` (default.qubit). Also `QWISPR_DEVICE` passthrough (e.g. `lightning.qubit`).
 
 `qwispr run --task resolve --qubo <file>` — QUBO dependency resolution: classical brute-force (n≤4) else QAOA.
 
@@ -40,13 +40,14 @@ Config: `qwispr.cliPath` overrides CLI path; `qwispr.backend` for future use.
 
 | Var | Values | Default |
 |-----|--------|---------|
-| `QWISPR_BACKEND` | `simulator\|lightning` | `simulator` |
+| `QWISPR_BACKEND` | `simulator\|lightning` | `lightning` |
 | `QWISPR_DEVICE` | device string (e.g. `lightning.qubit`) | — (derived from backend) |
 | `QWISPR_LAYERS` | int | per-command `--layers` |
 | `QWISPR_ITERS` | int | per-command `--iters` |
-| `QWISPR_CALIBRATION` | float (e.g. `0.98`, `1.02`) | `1.0` |
+| `QWISPR_CALIBRATION` | Reserved/unused (no runtime effect) | `1.0` |
 | `QISKIT_TOKEN` | IBM Quantum token | — (fallback to simulator) |
 | `QWISPR_QPU_DRYRUN` | `1` to simulate QPU path without token | `0` |
 | `QWISPR_QPU_SHOTS` | int 1..10000 | `1024` |
 | `QWISPR_TELEMETRY` | `1` to enable | `0` (off) |
 | `QWISPR_TELEMETRY_PATH` | path override | `~/.qwispr/telemetry.jsonl` |
+| `QWISPR_ALLOW_ABSOLUTE` | `1` to bypass workspace-root jail | `0` (jailed) |

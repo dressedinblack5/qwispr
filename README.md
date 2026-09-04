@@ -192,8 +192,7 @@ QWISPR_BACKEND=lightning BENCH_N=5 npm run benchmark
 | `QWISPR_ITERS` | `50` | Optimizer iterations (honored by python workers/benchmark only; CLI `--iters` overrides) |
 | `QWISPR_TELEMETRY` | `0` | Set `1` to enable `~/.qwispr/telemetry.jsonl` |
 | `QWISPR_TELEMETRY_PATH` | `~/.qwispr/telemetry.jsonl` | Custom telemetry path |
-| `QWISPR_CALIBRATION` | `1.0` | Reserved/unused — `getCalibration()` is currently unwired (no runtime effect) |
-| `QISKIT_TOKEN` | — | IBM Quantum token for QPU pilot |
+| `QWISPR_CALIBRATION` | `1.0` | Reserved/unused (no runtime effect; no reader in code) |
 | `QWISPR_QPU_DRYRUN` | `0` | Set `1` for dry-run QPU path |
 | `QWISPR_ALLOW_ABSOLUTE` | `0` | Bypass workspace-root jail (search globs + analyze/refactor/testgen `--file`) |
 | `QISKIT_TOKEN` | — | IBM Quantum token, reported in `hardware` status (`hasToken`); live QPU calls not implemented — set `QWISPR_QPU_DRYRUN=1` for the simulated path |

@@ -7,7 +7,3 @@ export const AGENT_MAP: Record<Task, string> = {
   analyze: 'analyze-agent',
   refactor: 'refactor-agent',
 };
-
-export function agentFor(task: string): string {
-  return (AGENT_MAP as Record<string, string>)[task] ?? 'unknown';
-}

@@ -15,18 +15,3 @@ export function groverProbabilities(n: number, marked: boolean[], iterations?: n
   const pUnmarked = Math.pow(Math.cos(angle), 2) / (n - m);
   return marked.map(v => (v ? pMarked : pUnmarked));
 }
-
-export function groverSearch<T>(items: T[], oracle: (x: T) => boolean, iterations?: number) {
-  const marked = items.map(oracle);
-  const probabilities = groverProbabilities(items.length, marked, iterations);
-  let amplifiedIndex = -1;
-  let maxP = -1;
-  probabilities.forEach((p, i) => {
-    if (p > maxP) {
-      maxP = p;
-      amplifiedIndex = i;
-    }
-  });
-  if (marked.filter(Boolean).length === 0) amplifiedIndex = -1;
-  return { amplifiedIndex, probabilities };
-}

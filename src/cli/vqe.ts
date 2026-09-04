@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import { runVqe } from '../skills/vqe-agent/vqe';
-import { assertFileExists } from '../skills/hardening/guard';
+import { assertFileExists, resolveInsideRoot } from '../skills/hardening/guard';
 import { parseIntSafe } from './parse-int';
 
 export async function vqeCommand(args: string[]) {
@@ -23,7 +23,7 @@ export async function vqeCommand(args: string[]) {
   assertFileExists(quboFile);
   let data: unknown;
   try {
-    data = JSON.parse(fs.readFileSync(quboFile, 'utf8')) as unknown;
+    data = JSON.parse(fs.readFileSync(resolveInsideRoot(quboFile), 'utf8')) as unknown;
   } catch (e: unknown) {
     throw new Error(`qwispr: invalid JSON in ${quboFile}: ${(e as Error).message}`);
   }

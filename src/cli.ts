@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-import * as fs from 'node:fs';
-import { runVqe } from './skills/vqe-agent/vqe';
-import { assertFileExists } from './skills/hardening/guard';
+import { vqeCommand } from './cli/vqe';
 import { searchCommand } from './cli/search';
 import { testgenCommand } from './cli/testgen';
 import { analyzeCommand } from './cli/analyze';
@@ -10,7 +8,6 @@ import { orchestratorCommand } from './cli/orchestrator';
 import { Backend, getBackend, getDeviceString } from './skills/hardware/backend';
 import { getQpuStatus } from './skills/hardware/qpu';
 import { startMcpServer } from './mcp/server';
-import { parseIntSafe } from './cli/parse-int';
 
 function hardwareList() {
   const current = getBackend();
@@ -50,10 +47,6 @@ function printHelp() {
   console.log('  analyze, qwalk   call-graph + QWalk metrics');
   console.log('    qwispr analyze --file <path> [--entry <name>]');
   console.log('    qwispr qwalk --file <path> [--entry <name>]  (alias)');
-  console.log('  resolve          QUBO dependency resolution (QAOA/classical)');
-  console.log(
-    '    qwispr run --task resolve --qubo <file> [--backend simulator|lightning]'
-  );
   console.log('  grover, search   Grover-ranked code search');
   console.log('    qwispr search --pattern <regex> --files <glob> [--top 10]');
   console.log('    qwispr grover --pattern <regex> --files <glob> [--top 10]  (alias)');
@@ -112,35 +105,7 @@ async function main() {
     args.splice(bi, 2);
   }
   if (args[0] === 'vqe') {
-    let quboFile = '',
-      layers = 2,
-      iters = 50;
-    for (let i = 1; i < args.length; i++) {
-      if (args[i] === '--qubo') {
-        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --qubo');
-        quboFile = args[++i];
-      } else if (args[i] === '--layers') {
-        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --layers');
-        layers = parseIntSafe(args[++i], '--layers');
-      } else if (args[i] === '--iters') {
-        if (i + 1 >= args.length || args[i + 1] === undefined || args[i + 1].startsWith('-')) throw new Error('qwispr: missing value for --iters');
-        iters = parseIntSafe(args[++i], '--iters');
-      }
-    }
-    if (!quboFile) {
-      console.error('usage: qwispr vqe --qubo <file> --layers 2 --iters 50');
-      process.exit(1);
-    }
-    assertFileExists(quboFile);
-    let data: unknown;
-    try {
-      data = JSON.parse(fs.readFileSync(quboFile, 'utf8')) as unknown;
-    } catch (e: unknown) {
-      throw new Error(`qwispr: invalid JSON in ${quboFile}: ${(e as Error).message}`);
-    }
-    const d = data as Record<string, unknown>;
-    const Q = (d.Q ?? d.costQubo) as number[][];
-    const result = await runVqe({ costQubo: Q, nLayers: layers, iters });
+    const result = await vqeCommand(args.slice(1));
     console.log(JSON.stringify(result, null, 2));
   } else if (args[0] === 'search') {
     const result = searchCommand(args.slice(1));

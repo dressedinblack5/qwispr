@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import { orchestrateAdaptive } from '../skills/orchestrator/orchestrator';
 import { appendEvent } from '../skills/learning/telemetry';
-import { assertFileExists } from '../skills/hardening/guard';
+import { assertFileExists, resolveInsideRoot } from '../skills/hardening/guard';
 import type { Task } from '../skills/orchestrator/router';
 import { searchCommand } from './search';
 import { testgenCommand } from './testgen';
@@ -39,7 +39,7 @@ function parseTask(args: string[]): {
       }
       try {
         assertFileExists(rest[qi + 1]);
-        const raw = fs.readFileSync(rest[qi + 1], 'utf8');
+        const raw = fs.readFileSync(resolveInsideRoot(rest[qi + 1]), 'utf8');
         let data: Record<string, unknown>;
         try {
           data = JSON.parse(raw) as Record<string, unknown>;
@@ -61,7 +61,7 @@ function parseTask(args: string[]): {
         throw new Error('qwispr: missing value for --file');
       }
       try {
-        const src = fs.readFileSync(rest[fi + 1], 'utf8');
+        const src = fs.readFileSync(resolveInsideRoot(rest[fi + 1]), 'utf8');
         // heuristic: number of functions as proxy for nVars
         const funcs = (src.match(/function\s+\w+/g) || []).length;
         if (funcs > 0) nVars = funcs;
@@ -92,7 +92,7 @@ export async function orchestratorCommand(args: string[]) {
         assertFileExists(rest[qi + 1]);
         let data: unknown;
         try {
-          data = JSON.parse(fs.readFileSync(rest[qi + 1], 'utf8')) as unknown;
+          data = JSON.parse(fs.readFileSync(resolveInsideRoot(rest[qi + 1]), 'utf8')) as unknown;
         } catch (e: unknown) {
           throw new Error(`qwispr: invalid JSON in ${rest[qi + 1]}: ${(e as Error).message}`);
         }

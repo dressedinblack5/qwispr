@@ -2,13 +2,6 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { spawn } from 'node:child_process';
 
-export function getCalibration(): number {
-  const raw = (process.env.QWISPR_CALIBRATION ?? '1.0').trim();
-  if (!/^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/.test(raw)) return 1.0;
-  const v = parseFloat(raw);
-  return Number.isFinite(v) ? v : 1.0;
-}
-
 export function assertFileExists(p: string): void {
   try {
     const lst = fs.lstatSync(p);
@@ -30,6 +23,29 @@ export function assertFileExists(p: string): void {
     if ((e as Error).message.startsWith('qwispr:')) throw e;
     throw new Error(`qwispr: file not found: ${p}`);
   }
+}
+
+export function resolveInsideRoot(file: string): string {
+  const root = path.resolve(process.cwd());
+  const abs = path.isAbsolute(file) ? file : path.join(root, file);
+  let resolved: string;
+  try {
+    fs.lstatSync(abs);
+    resolved = fs.realpathSync(abs);
+  } catch {
+    resolved = path.resolve(abs);
+    const inside = resolved === root || resolved.startsWith(root + path.sep);
+    if (!inside && process.env.QWISPR_ALLOW_ABSOLUTE !== '1') {
+      throw new Error(`qwispr: path escapes workspace root: ${file}`);
+    }
+    throw new Error(`qwispr: file not found: ${file}`);
+  }
+  const inside =
+    process.env.QWISPR_ALLOW_ABSOLUTE === '1'
+      ? true
+      : resolved === root || resolved.startsWith(root + path.sep);
+  if (!inside) throw new Error(`qwispr: path escapes workspace root: ${file}`);
+  return resolved;
 }
 
 export function assertSafePattern(pattern: string): void {

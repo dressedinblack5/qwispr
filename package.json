@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc && npm run copy:py",
-    "copy:py": "mkdir -p dist/skills/qaoa-agent dist/skills/vqe-agent dist/skills/hardware && cp src/skills/qaoa-agent/qaoa.py dist/skills/qaoa-agent/ && cp src/skills/vqe-agent/vqe.py dist/skills/vqe-agent/ && cp src/skills/hardware/qpu.py dist/skills/hardware/",
+    "copy:py": "mkdir -p dist/skills/qaoa-agent dist/skills/vqe-agent dist/skills/hardware dist/skills/qwalk-agent && cp src/skills/qaoa-agent/qaoa.py dist/skills/qaoa-agent/ && cp src/skills/vqe-agent/vqe.py dist/skills/vqe-agent/ && cp src/skills/hardware/qpu.py dist/skills/hardware/ && cp src/skills/qwalk-agent/qwalk.py dist/skills/qwalk-agent/",
     "dev": "tsx watch src/cli.ts",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",

@@ -3,8 +3,9 @@
 
 set -e
 
-OUT_DIR="/home/dressedinblack/Projects/qwispr/benchmarks/lockfiles"
-INDEX_FILE="/home/dressedinblack/Projects/qwispr/benchmarks/index.json"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OUT_DIR="$SCRIPT_DIR/lockfiles"
+INDEX_FILE="$SCRIPT_DIR/index.json"
 
 mkdir -p "$OUT_DIR"
 

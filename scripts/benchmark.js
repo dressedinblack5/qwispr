@@ -5,7 +5,16 @@ const path = require("path");
 const { spawn } = require("child_process");
 
 const TIMEOUT_MS = 10000;
-const BENCH_N = process.env.BENCH_N ? parseInt(process.env.BENCH_N, 10) : null;
+function parseBenchN() {
+  const raw = process.env.BENCH_N;
+  if (raw === undefined || raw === "") return null;
+  if (!/^\d+$/.test(raw)) {
+    console.error(`BENCH_N invalid: ${JSON.stringify(raw)} — expected non-negative integer`);
+    process.exit(1);
+  }
+  return Number(raw);
+}
+const BENCH_N = parseBenchN();
 
 function p95(arr) {
   if (!arr.length) return 0;
@@ -17,7 +26,7 @@ function p95(arr) {
 function bruteForce(Q) {
   const n = Q.length;
   let best = Infinity, bestBs = "";
-  for (let bits = 0; bits < (1 << n); bits++) {
+  for (let bits = 0; bits < Math.pow(2, n); bits++) {
     const bv = Array.from({ length: n }, (_, k) => (bits >> k) & 1);
     let e = 0;
     for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) e += Q[i][j] * bv[i] * bv[j];
@@ -52,7 +61,9 @@ function loadCases(suite) {
           const data = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
           const Q = data.Q ?? data.costQubo ?? data.qubo;
           if (Array.isArray(Q) && Q.length) cases.push({ id: path.basename(f, ".json"), Q });
-        } catch {}
+        } catch (e) {
+          console.warn(`benchmark: loadCases skip ${f}: ${e.message}`);
+        }
       }
       if (cases.length) return cases;
     }
@@ -83,7 +94,7 @@ function runQuantum(Q, timeoutMs) {
     let out = "", err = "";
     let done = false;
     const timer = setTimeout(() => {
-      if (!done) { done = true; try { py.kill("SIGKILL"); } catch {} resolve({ ok: false, error: "timeout", wallMs: timeoutMs }); }
+      if (!done) { done = true; try { py.kill("SIGKILL"); } catch (e) { console.warn(`benchmark: kill failed: ${e.message}`); } resolve({ ok: false, error: "timeout", wallMs: timeoutMs }); }
     }, timeoutMs);
     py.stdout.on("data", d => out += d);
     py.stderr.on("data", d => err += d);
@@ -98,15 +109,15 @@ function runQuantum(Q, timeoutMs) {
       try {
         const r = JSON.parse(out);
         resolve({ ok: true, bitstring: r.bestBitstring, energy: r.bestEnergy, wallMs });
-      } catch { resolve({ ok: false, error: out.slice(0, 200), wallMs }); }
+      } catch (e) { resolve({ ok: false, error: (e.message + " " + out).slice(0, 200), wallMs }); }
     });
-    try { py.stdin.write(JSON.stringify({ costQubo: Q })); py.stdin.end(); } catch {}
+    try { py.stdin.write(JSON.stringify({ costQubo: Q })); py.stdin.end(); } catch (e) { console.warn(`benchmark: stdin write failed: ${e.message}`); }
   });
 }
 
 async function runSuite(suite) {
   let cases = loadCases(suite);
-  if (BENCH_N && cases.length > BENCH_N) cases = cases.slice(0, BENCH_N);
+  if (BENCH_N !== null && cases.length > BENCH_N) cases = cases.slice(0, BENCH_N);
   const results = [];
   for (const c of cases) {
     const t0 = Date.now();

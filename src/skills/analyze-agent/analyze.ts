@@ -1,5 +1,31 @@
 import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { bfsReachable, centrality, diameter, hotSpots, buildAdj } from '../qwalk-agent/qwalk';
+
+function assertInsideRoot(file: string): string {
+  const root = path.resolve(process.cwd());
+  const abs = path.isAbsolute(file) ? file : path.join(root, file);
+  let resolved: string;
+  try {
+    fs.lstatSync(abs);
+    resolved = fs.realpathSync(abs);
+  } catch {
+    resolved = path.resolve(abs);
+    const inside = resolved === root || resolved.startsWith(root + path.sep);
+    if (!inside && process.env.QWISPR_ALLOW_ABSOLUTE !== '1') {
+      throw new Error(`qwispr: path escapes workspace root: ${file}`);
+    }
+    throw new Error(`qwispr: file not found: ${file}`);
+  }
+  const inside =
+    process.env.QWISPR_ALLOW_ABSOLUTE === '1'
+      ? true
+      : resolved === root || resolved.startsWith(root + path.sep);
+  if (!inside) throw new Error(`qwispr: path escapes workspace root: ${file}`);
+  const stat = fs.statSync(resolved);
+  if (!stat.isFile()) throw new Error(`qwispr: not a regular file: ${file}`);
+  return resolved;
+}
 
 export interface AnalyzeResult {
   nodes: string[];
@@ -12,7 +38,6 @@ export interface AnalyzeResult {
 
 // ponytail: regex call-graph, O(n) scan; replace with code-graph AST when parser ready
 function extractCallGraph(source: string): { nodes: string[]; edges: [string, string][] } {
-  // try code-graph if available
   try {
     const cg = (
       globalThis as unknown as {
@@ -32,24 +57,39 @@ function extractCallGraph(source: string): { nodes: string[]; edges: [string, st
     const name = m[1] ?? m[2] ?? m[3];
     if (name) funcs.push({ name, index: m.index });
   }
-  // also match `function foo()` without const
   funcs.sort((a, b) => a.index - b.index);
   const nodes = funcs.map(f => f.name);
   const nodeSet = new Set(nodes);
   const edges: [string, string][] = [];
 
-  // slice body for each function: from its index to next function index (or end)
   for (let i = 0; i < funcs.length; i++) {
-    const start = funcs[i].index;
-    const end = i + 1 < funcs.length ? funcs[i + 1].index : source.length;
-    const body = source.slice(start, end);
-    // find calls: word followed by '(' not preceded by 'function' or '=>'
+    const funcStart = funcs[i].index;
+    const openIdx = source.indexOf('{', funcStart);
+    let body: string;
+    if (openIdx !== -1) {
+      let depth = 0;
+      let closeIdx = -1;
+      for (let j = openIdx; j < source.length; j++) {
+        if (source[j] === '{') depth++;
+        else if (source[j] === '}') {
+          depth--;
+          if (depth === 0) {
+            closeIdx = j;
+            break;
+          }
+        }
+      }
+      if (closeIdx !== -1) body = source.slice(openIdx, closeIdx + 1);
+      else body = source.slice(openIdx);
+    } else {
+      const end = i + 1 < funcs.length ? funcs[i + 1].index : source.length;
+      body = source.slice(funcStart, end);
+    }
     const callRe = /\b(\w+)\s*\(/g;
     let cm: RegExpExecArray | null;
     const seen = new Set<string>();
     while ((cm = callRe.exec(body))) {
       const callee = cm[1];
-      if (callee === funcs[i].name) continue; // skip self definition match
       if (
         ['if', 'for', 'while', 'switch', 'catch', 'function', 'return', 'await', 'async'].includes(
           callee
@@ -71,12 +111,15 @@ export function analyzeSource(source: string, entry?: string): AnalyzeResult {
   const e = entry ?? nodes[0] ?? '';
   const reachableFromEntry = e ? bfsReachable(adj, e) : [];
   const cent = centrality(nodes, edges);
-  const dia = diameter(nodes, adj);
+  const diaRaw = diameter(nodes, adj);
+  // JSON has no Infinity: -1 means disconnected graph (qwalk sentinel is Infinity)
+  const dia = Number.isFinite(diaRaw) ? diaRaw : -1;
   const hs = hotSpots(cent);
   return { nodes, edges, reachableFromEntry, centrality: cent, diameter: dia, hotSpots: hs };
 }
 
 export function analyze(opts: { file: string; entry?: string }): AnalyzeResult {
-  const source = fs.readFileSync(opts.file, 'utf8');
+  const resolved = assertInsideRoot(opts.file);
+  const source = fs.readFileSync(resolved, 'utf8');
   return analyzeSource(source, opts.entry);
 }

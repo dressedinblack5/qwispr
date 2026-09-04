@@ -1,7 +1,32 @@
 import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { analyzeSource } from '../analyze-agent/analyze';
 
-// ponytail: heuristic cohesion = 1/(1+outDegree); swap to QML classifier when qml-agent wired
+function assertInsideRoot(file: string): string {
+  const root = path.resolve(process.cwd());
+  const abs = path.isAbsolute(file) ? file : path.join(root, file);
+  let resolved: string;
+  try {
+    fs.lstatSync(abs);
+    resolved = fs.realpathSync(abs);
+  } catch {
+    resolved = path.resolve(abs);
+    const inside = resolved === root || resolved.startsWith(root + path.sep);
+    if (!inside && process.env.QWISPR_ALLOW_ABSOLUTE !== '1') {
+      throw new Error(`qwispr: path escapes workspace root: ${file}`);
+    }
+    throw new Error(`qwispr: file not found: ${file}`);
+  }
+  const inside =
+    process.env.QWISPR_ALLOW_ABSOLUTE === '1'
+      ? true
+      : resolved === root || resolved.startsWith(root + path.sep);
+  if (!inside) throw new Error(`qwispr: path escapes workspace root: ${file}`);
+  const stat = fs.statSync(resolved);
+  if (!stat.isFile()) throw new Error(`qwispr: not a regular file: ${file}`);
+  return resolved;
+}
+
 function cohesionHeuristic(nodes: string[], edges: [string, string][]): Record<string, number> {
   const outDeg = new Map<string, number>(nodes.map(n => [n, 0]));
   for (const [f] of edges) outDeg.set(f, (outDeg.get(f) ?? 0) + 1);
@@ -53,6 +78,7 @@ export function refactorSource(source: string, file: string, top = 5): RefactorR
 }
 
 export function refactor(opts: { file: string; top?: number }): RefactorResult {
-  const source = fs.readFileSync(opts.file, 'utf8');
+  const resolved = assertInsideRoot(opts.file);
+  const source = fs.readFileSync(resolved, 'utf8');
   return refactorSource(source, opts.file, opts.top ?? 5);
 }

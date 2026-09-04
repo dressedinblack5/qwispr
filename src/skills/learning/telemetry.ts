@@ -20,9 +20,35 @@ function getTelemetryPath(): string {
   const home = path.resolve(os.homedir());
   const cwd = path.resolve(process.cwd());
   const tmp = path.resolve(os.tmpdir());
-  const inside = (base: string) => resolved === base || resolved.startsWith(base + path.sep);
-  if (!inside(home) && !inside(cwd) && !inside(tmp)) {
+  const inside = (base: string, p: string) => p === base || p.startsWith(base + path.sep);
+  if (!inside(home, resolved) && !inside(cwd, resolved) && !inside(tmp, resolved)) {
     throw new Error(`qwispr: telemetry path outside allowed dirs: ${raw}`);
+  }
+  let realResolved: string;
+  try {
+    realResolved = fs.realpathSync(resolved);
+  } catch {
+    try {
+      const realDir = fs.realpathSync(path.dirname(resolved));
+      realResolved = path.join(realDir, path.basename(resolved));
+    } catch {
+      realResolved = resolved;
+    }
+  }
+  try {
+    const lst = fs.lstatSync(resolved);
+    if (lst.isSymbolicLink() && realResolved !== resolved) {
+      if (!inside(home, realResolved) && !inside(cwd, realResolved) && !inside(tmp, realResolved)) {
+        throw new Error(`qwispr: telemetry symlink outside allowed dirs: ${raw} -> ${realResolved}`);
+      }
+    }
+  } catch {
+    // lstatSync failed (path may not exist yet): realpath check below still applies
+  }
+  if (realResolved !== resolved) {
+    if (!inside(home, realResolved) && !inside(cwd, realResolved) && !inside(tmp, realResolved)) {
+      throw new Error(`qwispr: telemetry path resolves outside allowed dirs: ${raw} -> ${realResolved}`);
+    }
   }
   return resolved;
 }

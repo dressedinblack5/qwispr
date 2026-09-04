@@ -120,6 +120,7 @@ async function runSuite(suite) {
   if (BENCH_N !== null && cases.length > BENCH_N) cases = cases.slice(0, BENCH_N);
   const results = [];
   for (const c of cases) {
+    if (c.Q.length > 20) throw new Error(`benchmark: n=${c.Q.length} too large for classical brute force (max 20)`);
     const t0 = Date.now();
     const classical = bruteForce(c.Q);
     const classicalMs = Date.now() - t0;
@@ -159,6 +160,10 @@ async function runSuite(suite) {
 
 async function main() {
   const suite = process.argv[2] || "synthetic";
+  if (!["synthetic", "real", "report"].includes(suite)) {
+    console.error(`benchmark: unknown suite ${JSON.stringify(suite)} — expected synthetic|real|report`);
+    process.exit(1);
+  }
   if (suite === "report") {
     const synPath = path.join(__dirname, "..", "results", "synthetic.json");
     const realPath = path.join(__dirname, "..", "results", "real.json");

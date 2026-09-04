@@ -40,9 +40,20 @@ export async function runQaoa(input: QaoaInput): Promise<QaoaResult> {
       throw new Error(`qwispr: python not found: python3 — ${msg}`);
     throw e;
   }
+  let parsed: unknown;
   try {
-    return JSON.parse(result.stdout);
+    parsed = JSON.parse(result.stdout);
   } catch {
     throw new Error(result.stdout.slice(0, 200) || 'qwispr: qaoa parse failed');
   }
+  const p = parsed as { bitstring?: unknown; energy?: unknown };
+  if (
+    typeof p.bitstring !== 'string' ||
+    !/^[01]+$/.test(p.bitstring) ||
+    typeof p.energy !== 'number' ||
+    !Number.isFinite(p.energy)
+  ) {
+    throw new Error('qwispr: qaoa unexpected shape');
+  }
+  return parsed as QaoaResult;
 }

@@ -48,7 +48,7 @@ def ising_hamiltonian(h, J, n):
 
 
 # hardware backend abstraction — see src/skills/hardware/backend.ts; QWISPR_BACKEND maps to device strings, QWISPR_DEVICE passthrough takes precedence
-_BACKEND_MAP = {"simulator": "default.qubit", "lightning": "lightning.qubit", "ibm": "qiskit.ibmq", "braket": "braket.aws.qubit"}  # ponytail: ibm/braket stubs, no SDK import
+_BACKEND_MAP = {"simulator": "default.qubit", "lightning": "lightning.qubit"}  # ponytail: only simulator/lightning, no cloud SDK
 
 
 def _resolve_device_name():
@@ -56,7 +56,7 @@ def _resolve_device_name():
     if dev:
         return dev
     backend = os.environ.get("QWISPR_BACKEND", "").lower().strip()
-    return _BACKEND_MAP.get(backend, "lightning.qubit")
+    return _BACKEND_MAP.get(backend, "default.qubit")
 
 
 def get_device(n):

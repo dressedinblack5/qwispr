@@ -69,7 +69,7 @@ def run_vqe(Q, n_layers=2, iters=50):
             if e < best_qe:
                 best_qe = e
                 best_bs = "".join(str(b) for b in reversed(bv))
-        if abs(best_e - best_qe) < 0.5:
+        if abs(best_e - best_qe) < 1e-9:
             return {"bestBitstring": best_bs, "bestEnergy": best_qe, "trajectory": trajectory}
         bs = _bitstring_from_state(best_p, n, n_layers, dev)
         qe = sum(Q[i][j] * int(bs[n-1-i]) * int(bs[n-1-j]) for i in range(n) for j in range(n))

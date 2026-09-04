@@ -34,9 +34,22 @@ export async function runVqe(input: VqeInput): Promise<VqeResult> {
       throw new Error(`qwispr: python not found: python3 — ${msg}`);
     throw e;
   }
+  let parsed: unknown;
   try {
-    return JSON.parse(result.stdout);
+    parsed = JSON.parse(result.stdout);
   } catch {
     throw new Error(`qwispr: parse failed: ${result.stdout.slice(0, 200)}`);
   }
+  const p = parsed as { bestBitstring?: unknown; bestEnergy?: unknown; trajectory?: unknown };
+  if (
+    typeof p.bestBitstring !== 'string' ||
+    !/^[01]+$/.test(p.bestBitstring) ||
+    typeof p.bestEnergy !== 'number' ||
+    !Number.isFinite(p.bestEnergy) ||
+    !Array.isArray(p.trajectory) ||
+    !(p.trajectory as unknown[]).every((v) => typeof v === 'number' && Number.isFinite(v))
+  ) {
+    throw new Error('qwispr: vqe unexpected shape');
+  }
+  return parsed as VqeResult;
 }

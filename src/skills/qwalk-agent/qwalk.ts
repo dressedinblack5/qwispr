@@ -28,13 +28,34 @@ export function centrality(nodes: string[], edges: [string, string][]): Record<s
 }
 
 export function diameter(nodes: string[], adj: Map<string, string[]>): number {
+  if (nodes.length === 0) return 0;
+  // sentinel: Infinity means disconnected undirected graph (no finite diameter)
+  const und = new Map<string, Set<string>>(nodes.map((n) => [n, new Set<string>()]));
+  for (const [f, list] of adj) {
+    for (const t of list) {
+      und.get(f)?.add(t);
+      und.get(t)?.add(f);
+    }
+  }
+  const seen = new Set<string>([nodes[0]]);
+  const q0 = [nodes[0]];
+  while (q0.length) {
+    const cur = q0.shift()!;
+    for (const nb of und.get(cur) ?? []) {
+      if (!seen.has(nb)) {
+        seen.add(nb);
+        q0.push(nb);
+      }
+    }
+  }
+  if (seen.size !== nodes.length) return Infinity;
   let maxD = 0;
   for (const s of nodes) {
     const dist = new Map<string, number>([[s, 0]]);
     const q = [s];
     while (q.length) {
       const cur = q.shift()!;
-      for (const nb of adj.get(cur) ?? []) {
+      for (const nb of und.get(cur) ?? []) {
         if (!dist.has(nb)) {
           dist.set(nb, dist.get(cur)! + 1);
           q.push(nb);

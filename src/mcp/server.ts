@@ -4,6 +4,57 @@ import { search } from '../skills/search-agent/search';
 import { generateTestInputs } from '../skills/testgen-agent/testgen';
 import { refactor } from '../skills/refactor-agent/refactor';
 import { Backend, getBackend, getDeviceString } from '../skills/hardware/backend';
+import { assertSafePattern } from '../skills/hardening/guard';
+
+const MAX_STDIN_BYTES = 1_048_576;
+const MAX_TOP = 100;
+const MAX_LAYERS = 10;
+const MAX_ITERS = 1000;
+
+function isString(v: unknown): v is string {
+  return typeof v === 'string';
+}
+function isBoundedInt(v: unknown, min: number, max: number): boolean {
+  return typeof v === 'number' && Number.isInteger(v) && v >= min && v <= max;
+}
+function validateArgs(name: string, args: Record<string, unknown>): string | null {
+  const stringFields = ['file', 'pattern', 'files', 'function', 'functionName', 'entry'] as const;
+  for (const f of stringFields) {
+    if (args[f] !== undefined && !isString(args[f])) return `Invalid params: ${f} must be a string`;
+  }
+  switch (name) {
+    case 'analyze':
+      if (!isString(args.file)) return 'Invalid params: file must be a string';
+      break;
+    case 'search':
+      if (!isString(args.pattern)) return 'Invalid params: pattern must be a string';
+      if (!isString(args.files)) return 'Invalid params: files must be a string';
+      try {
+        assertSafePattern(args.pattern);
+      } catch (e) {
+        return (e as Error).message;
+      }
+      break;
+    case 'testgen':
+      if (!isString(args.file)) return 'Invalid params: file must be a string';
+      if (!isString(args.function ?? args.functionName)) return 'Invalid params: function must be a string';
+      break;
+    case 'refactor':
+      if (!isString(args.file)) return 'Invalid params: file must be a string';
+      break;
+    case 'hardware':
+      break;
+    default:
+      return `Invalid params: unknown tool ${name}`;
+  }
+  if (args.top !== undefined && !isBoundedInt(args.top, 1, MAX_TOP))
+    return 'Invalid params: top must be integer 1..100';
+  if (args.layers !== undefined && !isBoundedInt(args.layers, 1, MAX_LAYERS))
+    return 'Invalid params: layers must be integer 1..10';
+  if (args.iters !== undefined && !isBoundedInt(args.iters, 1, MAX_ITERS))
+    return 'Invalid params: iters must be integer 1..1000';
+  return null;
+}
 
 const TOOLS = [
   {
@@ -128,16 +179,53 @@ export async function startMcpServer(): Promise<void> {
       } else if (method === 'tools/call') {
         const params = m.params as Record<string, unknown> | undefined;
         const name = params?.name as string;
-        const args = (params?.arguments as Record<string, unknown> | undefined) ?? {};
-        const result = await dispatch(name, args);
-        send({
-          jsonrpc: '2.0',
-          id,
-          result: {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
-            isError: false,
-          },
-        });
+        const rawArgs = params?.arguments;
+        const args = (rawArgs as Record<string, unknown> | undefined) ?? {};
+        if (typeof name !== 'string' || !TOOLS.some(t => t.name === name)) {
+          if (id !== undefined)
+            send({
+              jsonrpc: '2.0',
+              id,
+              error: { code: -32602, message: `Invalid params: unknown tool ${String(name)}` },
+            });
+          return;
+        }
+        if (
+          rawArgs !== undefined &&
+          (typeof rawArgs !== 'object' || rawArgs === null || Array.isArray(rawArgs))
+        ) {
+          if (id !== undefined)
+            send({
+              jsonrpc: '2.0',
+              id,
+              error: { code: -32602, message: 'Invalid params: arguments must be an object' },
+            });
+          return;
+        }
+        const validationError = validateArgs(name, args);
+        if (validationError) {
+          if (id !== undefined)
+            send({ jsonrpc: '2.0', id, error: { code: -32602, message: validationError } });
+          return;
+        }
+        try {
+          const result = await dispatch(name, args);
+          send({
+            jsonrpc: '2.0',
+            id,
+            result: {
+              content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+              isError: false,
+            },
+          });
+        } catch (e: unknown) {
+          const msg = (e as Error)?.message ?? String(e);
+          send({
+            jsonrpc: '2.0',
+            id,
+            result: { content: [{ type: 'text', text: msg }], isError: true },
+          });
+        }
       } else if (method === 'ping') {
         send({ jsonrpc: '2.0', id, result: {} });
       } else {
@@ -157,6 +245,15 @@ export async function startMcpServer(): Promise<void> {
 
   process.stdin.on('data', async (chunk: string) => {
     buf += chunk;
+    if (Buffer.byteLength(buf, 'utf8') > MAX_STDIN_BYTES) {
+      send({
+        jsonrpc: '2.0',
+        id: null,
+        error: { code: -32603, message: `stdin buffer exceeded ${MAX_STDIN_BYTES} bytes` },
+      });
+      buf = '';
+      return;
+    }
     let idx: number;
     while ((idx = buf.indexOf('\n')) !== -1) {
       const line = buf.slice(0, idx).trim();

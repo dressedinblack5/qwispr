@@ -1,3 +1,8 @@
+---
+name: vqe-agent
+description: VQE ground-state search over QUBO cost Hamiltonians for qwispr vqe
+---
+
 # vqe-agent — VQE Test-Input Generation
 Finds minimal unsatisfying inputs by minimizing a cost Hamiltonian (QUBO→Ising→VQE).
 Input: `{costQubo: number[][], nLayers?: number, iters?: number}` — QUBO matrix encoding test-failure energy / branch distance.

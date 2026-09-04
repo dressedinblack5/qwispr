@@ -1,3 +1,8 @@
+---
+name: refactor-agent
+description: QWalk plus QML refactoring suggestions; high centrality plus low cohesion means split candidate
+---
+
 # refactor-agent — QWalk + QML refactoring suggestions
 Wraps `qwalk-agent` centrality + `qml-agent` cohesion (heuristic fallback) for `qwispr refactor`.
 `refactor({file, top})` → `{candidates: {file, function, score, reason}[]}` where `score = centrality * (1 - cohesion)`.

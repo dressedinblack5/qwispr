@@ -1,3 +1,8 @@
+---
+name: analyze-agent
+description: QWalk call-graph insights for qwispr analyze: reachability, centrality, diameter, hot spots
+---
+
 # analyze-agent — QWalk call-graph insights
 Wraps `qwalk-agent` + `code-graph` (regex fallback) for `qwispr analyze`.
 `analyze({file, entry})` → `{nodes, edges, reachableFromEntry, centrality, diameter, hotSpots}`.

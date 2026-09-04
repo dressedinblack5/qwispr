@@ -1,3 +1,8 @@
+---
+name: testgen-agent
+description: VQE boundary test-input generation for qwispr testgen
+---
+
 # testgen-agent — VQE boundary test generation
 Wraps `vqe-agent` + AST branch-distance QUBO for `qwispr testgen`.
 `generateTestInputs({file, functionName, layers})` → `{inputs: any[][], coverageHint}`.

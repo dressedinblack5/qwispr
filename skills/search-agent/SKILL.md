@@ -1,3 +1,8 @@
+---
+name: search-agent
+description: Grover-ranked code pattern search for qwispr search
+---
+
 # search-agent — Grover-ranked code search
 Wraps `grover-agent` + file glob for `qwispr search`.
 `search({pattern, files, top})` → `{hits: {file,line,snippet}[], amplifiedIndex}`.

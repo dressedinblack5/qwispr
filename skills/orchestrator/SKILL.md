@@ -1,3 +1,8 @@
+---
+name: orchestrator
+description: Hybrid classical/quantum task router mapping tasks to agents via qwispr run
+---
+
 # orchestrator — hybrid classical/quantum router
 `orchestrate({task, nVars, trivial})` → `{route, reason, agent}`; `nVars<=4` or trivial → classical else quantum.
 Maps `resolve→qaoa-agent, search→search-agent, testgen→testgen-agent, analyze→analyze-agent, refactor→refactor-agent`.

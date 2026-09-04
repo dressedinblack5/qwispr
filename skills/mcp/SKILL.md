@@ -1,3 +1,8 @@
+---
+name: mcp
+description: stdio JSON-RPC server exposing analyze, search, testgen, refactor, hardware via tools/list and tools/call
+---
+
 # mcp — stdio JSON-RPC server
 Exposes `analyze, search, testgen, refactor, hardware` via `tools/list` + `tools/call`.
 Reuses `src/cli/*.ts` handlers; no new deps, manual JSON-RPC.

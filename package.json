@@ -1,6 +1,6 @@
 {
   "name": "qwispr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Quantum-enhanced general coding assistant on OpenAxe",
   "main": "dist/index.js",
   "bin": {
